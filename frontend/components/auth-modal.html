@@ -1,0 +1,63 @@
+<div class="hm-auth-modal" id="authModal">
+    <div class="hm-modal-overlay" id="hmOverlay"></div>
+
+    <button class="hm-modal-close-btn" id="closeAuthModal">&times;</button>
+
+    <div class="hm-modal-container">
+        <div class="hm-modal-content-wrapper">
+            <div class="hm-modal-left-side">
+                <div>
+                    <div class="hm-modal-tabs">
+                        <button class="hm-auth-tab-btn active" data-tab="login">Log In</button>
+                        <button class="hm-auth-tab-btn" data-tab="signup">Sign Up</button>
+                    </div>
+
+                    <div class="hm-auth-tab-content active" id="loginTab">
+                        <p class="hm-auth-instruction">We are glad to see you coming back. Please enter your email and password for log in to Hermitage.am.</p>
+                        <form class="hm-auth-form">
+                            <div class="hm-input-group">
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                            <div class="hm-input-group">
+                                <input type="password" placeholder="Password" required>
+                            </div>
+                            <a href="#" class="hm-forgot-pass-link">Reset password</a>
+                            <button type="submit" class="hm-auth-submit-btn">Log In</button>
+                        </form>
+                    </div>
+
+                    <div class="hm-auth-tab-content" id="signupTab">
+                        <p class="hm-auth-instruction">Create an account to track your orders, manage your profile, and receive updates.</p>
+                        <form class="hm-auth-form">
+                            <div class="hm-input-group">
+                                <input type="text" placeholder="First Name" required>
+                            </div>
+                            <div class="hm-input-group">
+                                <input type="text" placeholder="Last Name" required>
+                            </div>
+                            <div class="hm-input-group">
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                            <div class="hm-input-group">
+                                <input type="password" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="hm-auth-submit-btn">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="hm-social-login-section">
+                    <div class="hm-social-login-title">Or join us via:</div>
+                    <div class="hm-social-login-buttons">
+                        <button class="hm-social-btn"><i class="fab fa-facebook-f"></i> Facebook</button>
+                        <button class="hm-social-btn"><i class="fab fa-google"></i> Google</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hm-modal-right-side">
+                <img src="assets/images/banners/auth-banner.jpg" alt="Hermitage Perfumes & Cosmetics">
+            </div>
+        </div>
+    </div>
+</div>

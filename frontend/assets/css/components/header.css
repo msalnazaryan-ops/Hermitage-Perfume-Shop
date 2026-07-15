@@ -1,0 +1,244 @@
+/* ================= TWIN HEADER (HERMITAGE STYLE) ================= */
+.header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Top Header --- */
+.header-top {
+    background-color: var(--hermitage-dark);
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Որոնման Դաշտ */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 8px 18px;
+    width: 280px;
+    transition: var(--transition);
+}
+
+.search-box:focus-within {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.search-box i {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    margin-right: 12px;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text-light);
+    font-size: 13px;
+    width: 100%;
+    font-family: var(--font-sans);
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Կենտրոնական Լոգո */
+.logo {
+    font-family: var(--font-serif);
+    font-size: 34px;
+    letter-spacing: 5px;
+    font-weight: 400;
+    color: var(--text-light);
+    text-align: center;
+}
+
+/* Աջակողմյան գործիքներ */
+.header-right-tools {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 14px;
+}
+
+.tool-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+    font-weight: 400;
+    transition: var(--transition);
+}
+
+.tool-link:hover {
+    color: var(--primary-color);
+}
+
+.cart-link span {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2px 9px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.language-dropdown {
+    cursor: pointer;
+    color: var(--text-light);
+    font-weight: 400;
+    transition: var(--transition);
+}
+
+.language-dropdown:hover {
+    color: var(--primary-color);
+}
+
+.language-dropdown i {
+    font-size: 11px;
+    margin-left: 3px;
+}
+
+/* --- Main Navigation (Երկրորդ հարկ) --- */
+.main-nav {
+    background-color: var(--hermitage-nav-bg);
+    padding: 14px 0;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Ձախակողմյան "H" լոգոն */
+.nav-brand-icon {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.h-box {
+    background: var(--text-light);
+    color: var(--hermitage-dark);
+    font-weight: 700;
+    padding: 5px 11px;
+    font-family: var(--font-serif);
+    font-size: 18px;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Մենյուի հղումները */
+.nav-links {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    transition: var(--transition);
+    text-transform: uppercase;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+/*////////////////////*/
+/* Հիմնական տեսանելիությունը */
+/* --- Dropdown-ի ճշգրտված ոճերը --- */
+.dropdown {
+    position: relative; /* Անհրաժեշտ է, որպեսզի absolute-ը աշխատի հենց այս կետի նկատմամբ */
+}
+/* Դրոփդաունի ընդհանուր ոճ */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--hermitage-nav-bg);
+    min-width: 220px;
+    padding: 10px 0;
+    z-index: 9999;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+}
+
+/* Տողերի ոճավորում */
+.dropdown-menu li a {
+    display: flex; /* Flex-ի շնորհիվ տեքստը և սլաքը կլինեն իրար կողք */
+    justify-content: space-between; /* Սլաքը կգնա աջ */
+    align-items: center;
+    padding: 12px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu li a i {
+    font-size: 10px; /* Սլաքի չափը */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/*.dropdown-menu {*/
+/*    display: none; !* Սկզբում թաքնված *!*/
+/*    position: absolute;*/
+/*    top: 100%; !* Header-ից ներքև *!*/
+/*    left: 0;*/
+/*    background-color: var(--hermitage-nav-bg); !* Օգտագործիր քո փոփոխականը *!*/
+/*    min-width: 220px;*/
+/*    padding: 10px 0;*/
+/*    z-index: 9999; !* Որպեսզի լինի ամեն ինչի վերևում *!*/
+/*    box-shadow: 0 10px 20px rgba(0,0,0,0.3);*/
+/*}*/
+
+/* Մկնիկը վրան պահելիս */
+/*.dropdown:hover .dropdown-menu {*/
+/*    display: block !important; !* Ավելացրել եմ !important, որ հաստատ աշխատի *!*/
+/*}*/
+
+/* Դրոփդաունի կետերի ոճավորում */
+/*.dropdown-menu li {*/
+/*    display: block;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.dropdown-menu li a {*/
+/*    display: block;*/
+/*    padding: 12px 20px;*/
+/*    color: var(--text-light);*/
+/*    text-transform: uppercase;*/
+/*    font-size: 13px;*/
+/*    letter-spacing: 1px;*/
+/*    transition: all 0.3s ease;*/
+/*}*/
+
+/*.dropdown-menu li a:hover {*/
+/*    background-color: rgba(255, 255, 255, 0.1);*/
+/*    color: #fff;*/
+/*}*/

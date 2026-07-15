@@ -1,0 +1,112 @@
+/* ===================================================
+   RESPONSIVE DESIGN (MOBILE & TABLET STYLES)
+   =================================================== */
+
+@media (max-width: 992px) {
+    /* Մոդալի հարմարեցում պլանշետի համար */
+    .modal-container {
+        width: 95% !important;
+        height: auto !important;
+        max-height: 90vh;
+        flex-direction: column !important; /* Նկարն ու ֆորման գալիս են իրար տակ */
+        overflow-y: auto !important;
+    }
+    .modal-right-side {
+        display: none !important; /* Պլանշետի վրա նկարը թաքցնում ենք, որ տեղ ազատվի */
+    }
+    .modal-left-side {
+        padding: 40px 30px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Հելդերի և լոգոյի փոքրացում */
+    .logo {
+        font-size: 24px !important;
+        letter-spacing: 2px !important;
+    }
+    .nav-links {
+        display: none !important; /* Հեռախոսի վրա հիմնական մենյուն թաքցնում ենք */
+    }
+    .search-box {
+        width: 150px !important;
+    }
+    /* Հերոս Սլայդերի տեքստերի փոքրացում */
+    .hero-content h1 {
+        font-size: 36px !important;
+    }
+    /* Մոդալի կոճակների դասավորությունը հեռախոսի վրա */
+    .social-login-buttons {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+    .modal-close-btn {
+        top: 15px !important;
+        right: 15px !important;
+        font-size: 26px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .blog-image, .blog-content {
+        max-width: 100%;
+    }
+
+    .blog-title {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer-main-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-main-content {
+        grid-template-columns: 1fr;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .footer-bottom-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 850px) {
+    .modal-right-side {
+        display: none;
+    }
+    .modal-container {
+        max-width: 480px;
+        height: auto;
+    }
+    .modal-left-side {
+        padding: 40px 30px;
+    }
+    .social-login-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hm-modal-close-btn {
+        top: 15px !important;
+        right: 15px !important;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 24px !important;
+    }
+}

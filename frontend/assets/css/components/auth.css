@@ -1,0 +1,575 @@
+/* ================= AUTHENTICATION MODAL (LUXURY STYLE) ================= */
+.auth-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.auth-modal.active {
+    display: flex !important;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(5px);
+    z-index: 99998 !important;
+}
+
+.modal-container {
+    position: relative !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    width: 90%;
+    max-width: 950px;
+    height: 650px;
+    z-index: 99999 !important;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.modal-content-wrapper {
+    display: flex !important;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-left-side {
+    flex: 1.1;
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #ffffff;
+    position: relative;
+}
+
+.modal-right-side {
+    flex: 0.9;
+    height: 100%;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+.modal-right-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-close-btn {
+    position: absolute !important;
+    top: 25px !important;
+    right: 25px !important;
+    background: transparent !important;
+    border: none !important;
+    color: #000000 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 28px !important;
+    font-weight: 300 !important;
+    cursor: pointer !important;
+    z-index: 100020 !important;
+    line-height: 1 !important;
+    padding: 5px !important;
+    transition: transform 0.3s ease, color 0.3s ease !important;
+}
+
+.modal-close-btn:hover {
+    transform: rotate(90deg);
+    color: #888888 !important;
+}
+
+.modal-tabs {
+    display: flex;
+    gap: 35px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.auth-tab-btn {
+    background: none !important;
+    border: none !important;
+    padding: 0 0 10px 0 !important;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #999999;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+    text-transform: uppercase;
+}
+
+.auth-tab-btn:hover, .auth-tab-btn.active {
+    color: #000000;
+}
+
+.auth-tab-btn.active {
+    font-weight: 600;
+}
+
+.auth-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -11px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+}
+
+.auth-tab-content {
+    display: none;
+}
+
+.auth-tab-content.active {
+    display: block;
+}
+
+.auth-instruction {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    line-height: 1.6;
+    color: #666666;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 0;
+    border: none !important;
+    border-bottom: 1px solid #d3d3d3 !important;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    outline: none;
+    color: #000000;
+    background: transparent;
+    transition: var(--transition);
+    text-transform: uppercase;
+}
+
+.input-group input::placeholder {
+    color: #b2b2b2;
+}
+
+.input-group input:focus {
+    border-bottom-color: #000000 !important;
+}
+
+.forgot-pass-link {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: #888888;
+    text-align: right;
+    margin-top: -5px;
+    display: block;
+    text-decoration: underline;
+    transition: var(--transition);
+}
+
+.forgot-pass-link:hover {
+    color: #000000;
+}
+
+.auth-submit-btn {
+    background-color: var(--hermitage-dark);
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: var(--transition);
+    margin-top: 15px;
+}
+
+.auth-submit-btn:hover {
+    background-color: #000000;
+}
+
+.social-login-section {
+    margin-top: 30px;
+}
+
+.social-login-title {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #999999;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.social-login-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 10px;
+    border: 1px solid #d3d3d3 !important;
+    background: #ffffff !important;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #555555;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.social-btn:hover {
+    border-color: #000000 !important;
+    color: #000000;
+}
+
+/* ================= LANGUAGE DROPDOWN STYLES ================= */
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+}
+
+.lang-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.lang-menu a {
+    color: #333;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.lang-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+.lang-menu.show {
+    display: block;
+}
+
+/* ================= HM AUTHENTICATION MODAL ================= */
+.hm-auth-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.hm-auth-modal.active {
+    display: flex !important;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hm-modal-overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(5px);
+    z-index: 99998 !important;
+}
+
+.hm-modal-container {
+    position: relative !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    width: 90%;
+    max-width: 950px;
+    height: 650px;
+    z-index: 99999 !important;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.hm-modal-content-wrapper {
+    display: flex !important;
+    width: 100%;
+    height: 100%;
+}
+
+.hm-modal-left-side {
+    flex: 1.1;
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #ffffff;
+    position: relative;
+}
+
+.hm-modal-right-side {
+    flex: 0.9;
+    height: 100%;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+.hm-modal-right-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hm-modal-close-btn {
+    position: fixed !important;
+    top: 30px !important;
+    right: 30px !important;
+    background: transparent !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    font-size: 30px !important;
+    font-weight: 300 !important;
+    cursor: pointer !important;
+    z-index: 100000 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.hm-modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: rotate(90deg) scale(1.1);
+}
+
+.hm-modal-tabs {
+    display: flex;
+    gap: 35px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.hm-auth-tab-btn {
+    background: none !important;
+    border: none !important;
+    padding: 0 0 10px 0 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #999999;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.hm-auth-tab-btn:hover, .hm-auth-tab-btn.active {
+    color: #000000;
+}
+
+.hm-auth-tab-btn.active {
+    font-weight: 600;
+}
+
+.hm-auth-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -11px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+}
+
+.hm-auth-tab-content {
+    display: none;
+}
+
+.hm-auth-tab-content.active {
+    display: block;
+}
+
+.hm-auth-instruction {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #666666;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.hm-auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.hm-input-group input {
+    width: 100%;
+    padding: 10px 0;
+    border: none !important;
+    border-bottom: 1px solid #d3d3d3 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    outline: none;
+    color: #000000;
+    background: transparent;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.hm-input-group input::placeholder {
+    color: #b2b2b2;
+}
+
+.hm-input-group input:focus {
+    border-bottom-color: #000000 !important;
+}
+
+.hm-forgot-pass-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: #888888;
+    text-align: right;
+    margin-top: -5px;
+    display: block;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.hm-forgot-pass-link:hover {
+    color: #000000;
+}
+
+.hm-auth-submit-btn {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.hm-auth-submit-btn:hover {
+    background-color: #000000;
+}
+
+.hm-social-login-section {
+    margin-top: 30px;
+}
+
+.hm-social-login-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #999999;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.hm-social-login-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hm-social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 10px;
+    border: 1px solid #d3d3d3 !important;
+    background: #ffffff !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #555555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hm-social-btn:hover {
+    border-color: #000000 !important;
+    color: #000000;
+}

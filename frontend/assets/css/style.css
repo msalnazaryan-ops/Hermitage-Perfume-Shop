@@ -1,0 +1,89 @@
+@import 'components/header.css';
+@import 'components/hero.css';
+@import 'components/products.css';
+@import 'components/auth.css';
+@import 'components/footer.css';
+/* 2. Responsive-ը լավ է լինի վերջում, որպեսզի վերագրի մյուսները */
+@import 'responsive.css';
+/* Այստեղ կարող ես թողնել միայն ընդհանուր բաները՝ գույներ, ֆոնտեր, Reset */
+body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
+
+/* ================= VARIABLES & RESETS ================= */
+:root {
+    --primary-color: #191918; /* Luxury Gold */
+    --hermitage-dark: #210207; /* Օրիգինալ մուգ բորդո (Top Header) */
+    --hermitage-nav-bg: #330c13; /* Մենյուի ֆոնը (Main Nav) */
+    --bg-dark: #111111;
+    --text-light: #ffffff;
+    --text-muted: #e0e0e0;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --transition: all 0.4s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- DROP-DOWN STYLES (Ավելացրու սա style.css-ի վերջում) --- */
+/* Ավելացնում ենք հավելյալ պաշտպանություն, որ մենյուն միշտ երևա */
+.dropdown {
+    position: relative !important;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.dropdown-menu {
+    display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    background-color: #3d1c21 !important;
+    min-width: 250px !important;
+    z-index: 99999 !important; /* Ավելի բարձր ինդեքս */
+    padding: 10px 0 !important;
+    list-style: none !important;
+    transition: none !important;
+}
+
+.dropdown-menu li a {
+    display: block !important;
+    padding: 12px 20px !important;
+    color: #fff !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #55282e !important;
+}

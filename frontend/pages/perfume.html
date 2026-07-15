@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfume Collection</title>
+    <link rel="stylesheet" href="../assets/css/pages/perfume-standalone.css">
+</head>
+<body>
+
+<div class="catalog-container">
+    <aside class="sidebar">
+        <div class="filter-box gender-filter"> <h4>Gender</h4>
+            <label><input type="checkbox" class="filter-input" value="male"> Male</label><br>
+            <label><input type="checkbox" class="filter-input" value="female"> Female</label><br>
+            <label><input type="checkbox" class="filter-input" value="unisex"> Unisex</label>
+        </div>
+
+        <div class="filter-box">
+            <input type="text" placeholder="🔍 Search by brands...">
+        </div>
+
+        <div class="filter-box">
+            <h4>Price:</h4>
+            <div class="price-inputs">
+                <input type="number" value="0">
+                <input type="number" value="1000000">
+            </div>
+            <input type="range" class="price-range">
+        </div>
+
+        <div class="filter-box">
+            <label><input type="radio" name="filter"> All</label><br>
+            <label><input type="radio" name="filter"> Sale</label><br>
+            <label><input type="radio" name="filter"> Bestsellers</label><br>
+            <label><input type="radio" name="filter"> New Arrivals</label>
+        </div>
+
+        <button class="reset-btn">RESET</button>
+    </aside>
+
+    <main class="products-grid">
+        <h1 class="page-title">PERFUME</h1>
+
+        <div class="product-item" data-category="female">
+            <img src="../assets/images/perfumes/prada.jpg" alt="Prada">
+            <h3>PRADA</h3>
+            <p>PARFUM NAME</p>
+            <span class="price">45000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="female">
+            <img src="../assets/images/perfumes/ysl.jpg" alt="YSL">
+            <h3>YSL</h3>
+            <p>LIBRE EAU DE PARFUM</p>
+            <span class="price">46000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="female">
+            <img src="../assets/images/perfumes/lancome.jpg" alt="Lancôme">
+            <h3>LANCÔME</h3>
+            <p>IDÔLE EAU DE PARFUM</p>
+            <span class="price">37500 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="unisex">
+            <img src="../assets/images/perfumes/ajmal.png" alt="Ajmal">
+            <h3>AJMAL</h3>
+            <p>PERFUME NAME</p>
+            <span class="price">PRICE ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="unisex">
+            <img src="../assets/images/perfumes/clive.png" alt="Clive Christian">
+            <h3>CLIVE CHRISTIAN</h3>
+            <p>PERFUME NAME</p>
+            <span class="price">PRICE ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="female">
+            <img src="../assets/images/perfumes/dolcegabbana.jpg" alt="Dolce & Gabbana">
+            <h3>DOLCE & GABBANA</h3>
+            <p>PERFUME NAME</p>
+            <span class="price">PRICE ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="female">
+            <img src="../assets/images/perfumes/prada.jpg" alt="Prada">
+            <h3>PRADA</h3>
+            <p>PARFUM NAME</p>
+            <span class="price">45000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="unisex">
+            <img src="../assets/images/perfumes/bvlgari.jpg" alt="Bvlgari">
+            <h3>BVLGARI</h3>
+            <p>PERFUME NAME</p>
+            <span class="price">48000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="female">
+            <img src="../assets/images/perfumes/ninaricci.jpg" alt="Nina Ricci">
+            <h3>NINA RICCI</h3>
+            <p>PERFUME NAME</p>
+            <span class="price">42000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="female">
+            <img src="../assets/images/perfumes/dolce.png" alt="Dolce & Gabbana">
+            <h3>DOLCE & GABBANA</h3>
+            <p>LIGHT BLUE</p>
+            <span class="price">39000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="unisex">
+            <img src="../assets/images/perfumes/casamorati.jpg" alt="Casamorati">
+            <h3>CASAMORATI</h3>
+            <p>XERJOFF</p>
+            <span class="price">85000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="female">
+            <img src="../assets/images/perfumes/carolina.jpg" alt="Carolina Herrera">
+            <h3>CAROLINA HERRERA</h3>
+            <p>GOOD GIRL</p>
+            <span class="price">41000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+    </main>
+</div>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
