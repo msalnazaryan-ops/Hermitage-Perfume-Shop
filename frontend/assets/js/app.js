@@ -73,26 +73,51 @@ const translations = {
 document.addEventListener("DOMContentLoaded", async () => {
     const currentSavedLang = localStorage.getItem('selectedLang') || 'eng';
 
-    // 1. Բեռնում ենք Header-ը
+    // 1. Բեռնում ենք Header-ը (Ավելացրել եմ '/' սկզբում)
     const headerComponent = document.getElementById("header-component");
     if (headerComponent) {
         try {
-            const response = await fetch("components/header.html");
+            const response = await fetch("/components/header.html");
             if (!response.ok) throw new Error("Header-ը չգտնվեց");
-            headerComponent.innerHTML = await response.text();
+            const html = await response.text();
+            headerComponent.innerHTML = html;
+
             console.log("✅ Header-ը բեռնվեց");
-            initSwipers();
+            // const logo = document.getElementById("logoHome");
+            //
+            // if (logo) {
+            //     logo.addEventListener("click", (e) => {
+            //         e.preventDefault();
+            //         window.location.href = "/";
+            //     });
+            // }
+            // const logo = document.getElementById("logoHome");
+            //
+            // if (logo) {
+            //     logo.addEventListener("click", (e) => {
+            //         e.preventDefault();
+            //         window.location.href = "․․/index.html";
+            //     });
+            // }
+            console.log("✅ Header-ը բեռնվեց");
+
+            // Միայն այստեղ ենք կանչում initSwipers, երբ header-ը պատրաստ է
+            // Եվ ավելացրել ենք ստուգում, որպեսզի սխալ չտա, եթե Swiper-ը չկա
+            if (typeof initSwipers === 'function') {
+                initSwipers();
+            }
+
             initLanguageDropdown();
         } catch (error) {
             console.error("Խնդիր Header-ը բեռնելիս:", error);
         }
     }
 
-    // 2. Բեռնում ենք Footer-ը
+    // 2. Բեռնում ենք Footer-ը (Ավելացրել եմ '/' սկզբում)
     const footerComponent = document.getElementById("footer-component");
     if (footerComponent) {
         try {
-            const response = await fetch("components/footer.html");
+            const response = await fetch("/components/footer.html");
             footerComponent.innerHTML = await response.text();
             console.log("✅ Footer-ը բեռնվեց");
         } catch (error) {
@@ -100,15 +125,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // 3. Բեռնում ենք Auth Modal-ը
+    // 3. Բեռնում ենք Auth Modal-ը (Ավելացրել եմ '/' սկզբում)
     const authModalComponent = document.getElementById("auth-modal-component");
     if (authModalComponent) {
         try {
-            const response = await fetch("components/auth-modal.html");
+            const response = await fetch("/components/auth-modal.html");
             if (!response.ok) throw new Error("Auth Modal-ը չգտնվեց");
             authModalComponent.innerHTML = await response.text();
             console.log("✅ Auth Modal-ը բեռնվեց");
-            initAuthModal();
+            if (typeof initAuthModal === 'function') {
+                initAuthModal();
+            }
         } catch (error) {
             console.error("Խնդիր Մոդալը բեռնելիս:", error);
         }
@@ -116,6 +143,52 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     applyTranslations(currentSavedLang);
 });
+// document.addEventListener("DOMContentLoaded", async () => {
+//     const currentSavedLang = localStorage.getItem('selectedLang') || 'eng';
+//
+//     // 1. Բեռնում ենք Header-ը
+//     const headerComponent = document.getElementById("header-component");
+//     if (headerComponent) {
+//         try {
+//             const response = await fetch("components/header.html");
+//             if (!response.ok) throw new Error("Header-ը չգտնվեց");
+//             headerComponent.innerHTML = await response.text();
+//             console.log("✅ Header-ը բեռնվեց");
+//             initSwipers();
+//             initLanguageDropdown();
+//         } catch (error) {
+//             console.error("Խնդիր Header-ը բեռնելիս:", error);
+//         }
+//     }
+//
+//     // 2. Բեռնում ենք Footer-ը
+//     const footerComponent = document.getElementById("footer-component");
+//     if (footerComponent) {
+//         try {
+//             const response = await fetch("components/footer.html");
+//             footerComponent.innerHTML = await response.text();
+//             console.log("✅ Footer-ը բեռնվեց");
+//         } catch (error) {
+//             console.error("Խնդիր Footer-ը բեռնելիս:", error);
+//         }
+//     }
+//
+//     // 3. Բեռնում ենք Auth Modal-ը
+//     const authModalComponent = document.getElementById("auth-modal-component");
+//     if (authModalComponent) {
+//         try {
+//             const response = await fetch("components/auth-modal.html");
+//             if (!response.ok) throw new Error("Auth Modal-ը չգտնվեց");
+//             authModalComponent.innerHTML = await response.text();
+//             console.log("✅ Auth Modal-ը բեռնվեց");
+//             initAuthModal();
+//         } catch (error) {
+//             console.error("Խնդիր Մոդալը բեռնելիս:", error);
+//         }
+//     }
+//
+//     applyTranslations(currentSavedLang);
+// });
 
 // ===================================================
 // 2. AUTH MODAL LOGIC (LOGIN / SIGNUP & BACKEND)
@@ -226,8 +299,22 @@ function initAuthModal() {
 // ===================================================
 // 3. SWIPER SLIDERS INITIALIZATION
 // ===================================================
+// ===================================================
+// 3. SWIPER SLIDERS INITIALIZATION (Ուղղված տարբերակ)
+// ===================================================
 function initSwipers() {
-    if (document.querySelector('.heroSwiper')) {
+    // 1. Ստուգում ենք՝ արդյո՞ք Swiper գրադարանը հասանելի է
+    if (typeof Swiper === 'undefined') {
+        console.warn("⚠️ Swiper գրադարանը բեռնված չէ, սպասում ենք կամ բաց թողնում...");
+        return;
+    }
+
+    // 2. Ստուգում ենք՝ արդյո՞ք էջում կան սլայդերների կոնտեյներներ
+    const heroSlider = document.querySelector('.heroSwiper');
+    const productsSlider = document.querySelector('.productsSwiper');
+
+    // 3. Միացնում ենք միայն այն, ինչը գտնվել է էջում
+    if (heroSlider) {
         new Swiper(".heroSwiper", {
             loop: true,
             effect: "slide",
@@ -236,8 +323,10 @@ function initSwipers() {
             pagination: { el: ".swiper-pagination", clickable: true },
             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         });
+        console.log("✅ Hero Swiper-ը հաջողությամբ ակտիվացավ");
     }
-    if (document.querySelector('.productsSwiper')) {
+
+    if (productsSlider) {
         new Swiper(".productsSwiper", {
             slidesPerView: 4,
             spaceBetween: 30,
@@ -248,8 +337,64 @@ function initSwipers() {
                 1024: { slidesPerView: 4, spaceBetween: 30 }
             }
         });
+        console.log("✅ Products Swiper-ը հաջողությամբ ակտիվացավ");
     }
 }
+// function initSwipers() {
+//     // Ստուգում ենք՝ արդյո՞ք էջում կա Swiper-ի գրադարանը, նոր նոր աշխատում ենք
+//     if (typeof Swiper === 'undefined') {
+//         console.warn("⚠️ Swiper գրադարանը բեռնված չէ");
+//         return;
+//     }
+//
+//     if (document.querySelector('.heroSwiper')) {
+//         new Swiper(".heroSwiper", {
+//             loop: true,
+//             effect: "slide",
+//             speed: 1800,
+//             autoplay: { delay: 3000, disableOnInteraction: false },
+//             pagination: { el: ".swiper-pagination", clickable: true },
+//             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+//         });
+//     }
+//     if (document.querySelector('.productsSwiper')) {
+//         new Swiper(".productsSwiper", {
+//             slidesPerView: 4,
+//             spaceBetween: 30,
+//             navigation: { nextEl: ".prod-next", prevEl: ".prod-prev" },
+//             breakpoints: {
+//                 320: { slidesPerView: 1, spaceBetween: 10 },
+//                 768: { slidesPerView: 2, spaceBetween: 20 },
+//                 1024: { slidesPerView: 4, spaceBetween: 30 }
+//             }
+//         });
+//     }
+// }
+// function initSwipers() {
+//
+//     if (document.querySelector('.heroSwiper')) {
+//         new Swiper(".heroSwiper", {
+//             loop: true,
+//             effect: "slide",
+//             speed: 1800,
+//             autoplay: { delay: 3000, disableOnInteraction: false },
+//             pagination: { el: ".swiper-pagination", clickable: true },
+//             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+//         });
+//     }
+//     if (document.querySelector('.productsSwiper')) {
+//         new Swiper(".productsSwiper", {
+//             slidesPerView: 4,
+//             spaceBetween: 30,
+//             navigation: { nextEl: ".prod-next", prevEl: ".prod-prev" },
+//             breakpoints: {
+//                 320: { slidesPerView: 1, spaceBetween: 10 },
+//                 768: { slidesPerView: 2, spaceBetween: 20 },
+//                 1024: { slidesPerView: 4, spaceBetween: 30 }
+//             }
+//         });
+//     }
+// }
 
 // ===================================================
 // 4. LANGUAGE DROPDOWN

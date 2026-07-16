@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Perfume Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/pages/perfume-standalone.css">
 </head>
 <body>
-
+<div id="header-component"></div>
 <div class="catalog-container">
     <aside class="sidebar">
         <div class="filter-box gender-filter"> <h4>Gender</h4>
@@ -14,10 +16,15 @@
             <label><input type="checkbox" class="filter-input" value="female"> Female</label><br>
             <label><input type="checkbox" class="filter-input" value="unisex"> Unisex</label>
         </div>
-
         <div class="filter-box">
-            <input type="text" placeholder="🔍 Search by brands...">
+            <div class="search-box sidebar-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search by brands...">
+            </div>
         </div>
+<!--        <div class="filter-box">-->
+<!--            <input type="text" placeholder="🔍 Search by brands...">-->
+<!--        </div>-->
 
         <div class="filter-box">
             <h4>Price:</h4>
@@ -138,6 +145,7 @@
         </div>
     </main>
 </div>
+<div id="footer-component"></div>
 <script src="../assets/js/app.js"></script>
 </body>
 </html>

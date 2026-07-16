@@ -6,7 +6,31 @@
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
+.top-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* Կարևոր է երեխա էլեմենտների դիրքավորման համար */
+    padding: 10px 0;
+}
 
+.search-box {
+    width: 280px;
+    flex-shrink: 0; /* Չի թողնում սեղմվել */
+    margin-right: auto; /* Հրում է լոգոն և աջ գործիքները դեպի աջ */
+}
+
+.logo {
+    position: absolute; /* Դուրս է հանում հոսքից և դնում կենտրոնում */
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none; /* Որպեսզի լոգոն չխանգարի մկնիկի սեղմումներին */
+}
+
+.header-right-tools {
+    margin-left: auto; /* Հրում է աջ գործիքները դեպի աջ */
+    display: flex;
+    gap: 25px;
+}
 /* --- Top Header --- */
 .header-top {
     background-color: var(--hermitage-dark);
@@ -18,10 +42,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /*նոր*/
+    width: 100%;
+}
+/* Ավելացրու սրանք, որպեսզի բլոկները չխանգարեն իրար */
+.search-box, .logo, .header-right-tools {
+    flex: 1; /* Յուրաքանչյուրը զբաղեցնում է ընդհանուրի 1/3-ը */
 }
 
+.logo {
+    text-align: center; /* Լոգոն կմնա մեջտեղում */
+}
+
+.header-right-tools {
+    justify-content: flex-end; /* Աջ կողմի գործիքները կգնան ամենաաջ */
+}
 /* Որոնման Դաշտ */
 .search-box {
+    flex: 0 0 280px;   /* Սա երաշխավորում է, որ չի աճի և չի սեղմվի */
+    margin: 0;
     position: relative;
     display: flex;
     align-items: center;
@@ -164,47 +203,181 @@
 /*////////////////////*/
 /* Հիմնական տեսանելիությունը */
 /* --- Dropdown-ի ճշգրտված ոճերը --- */
+/* Դրոփդաունի պահողը */
 .dropdown {
-    position: relative; /* Անհրաժեշտ է, որպեսզի absolute-ը աշխատի հենց այս կետի նկատմամբ */
+    position: relative;
 }
-/* Դրոփդաունի ընդհանուր ոճ */
+
+/* Թաքցնում ենք մենյուն */
 .dropdown-menu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--hermitage-nav-bg);
-    min-width: 220px;
-    padding: 10px 0;
+    background-color: #3d1b21; /* Քո գույնը */
+    min-width: 200px;
     z-index: 9999;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
+/* Մկնիկը պահելիս ցույց ենք տալիս */
 .dropdown:hover .dropdown-menu {
     display: block !important;
 }
 
 /* Տողերի ոճավորում */
 .dropdown-menu li a {
-    display: flex; /* Flex-ի շնորհիվ տեքստը և սլաքը կլինեն իրար կողք */
-    justify-content: space-between; /* Սլաքը կգնա աջ */
-    align-items: center;
-    padding: 12px 20px;
+    display: block;
+    padding: 10px 20px;
     color: #fff;
     text-transform: uppercase;
     font-size: 13px;
-    transition: all 0.3s ease;
-}
-
-.dropdown-menu li a i {
-    font-size: 10px; /* Սլաքի չափը */
-    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 .dropdown-menu li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #5a2830;
 }
 
+/* Հիմնական դրոփդաունի կարգավորում */
+.dropdown-submenu {
+    position: relative;
+}
+
+/* Թաքցնում ենք MAKEUP-ի ենթացանկը */
+.dropdown-menu-inner {
+    display: none;
+    position: absolute;
+    left: 100%; /* Բացվում է աջ կողմից */
+    top: 0;
+    background-color: #3d1b21;
+    min-width: 200px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Մկնիկը պահելիս ցույց ենք տալիս */
+.dropdown-submenu:hover .dropdown-menu-inner {
+    display: block;
+}
+
+/* Ոճավորում */
+.dropdown-menu-inner li a {
+    padding: 10px 20px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+}
+/* Sidebar Search */
+
+.sidebar-search {
+    width: 100%;
+    height: 48px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.sidebar-search i {
+    color: rgba(255,255,255,.55);
+    margin-right: 12px;
+    font-size: 15px;
+}
+
+.sidebar-search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    font-family: var(--font-sans);
+}
+
+.sidebar-search input::placeholder {
+    color: rgba(255,255,255,.45);
+}
+
+.sidebar-search:focus-within {
+    background: rgba(255,255,255,.14);
+}
+/*.dropdown {*/
+/*    position: relative; !* Անհրաժեշտ է, որպեսզի absolute-ը աշխատի հենց այս կետի նկատմամբ *!*/
+/*}*/
+/*!* Դրոփդաունի ընդհանուր ոճ *!*/
+/*.dropdown-menu {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*    left: 0;*/
+/*    background-color: var(--hermitage-nav-bg);*/
+/*    min-width: 220px;*/
+/*    padding: 10px 0;*/
+/*    z-index: 9999;*/
+/*    box-shadow: 0 10px 20px rgba(0,0,0,0.3);*/
+/*}*/
+
+/*.dropdown:hover .dropdown-menu {*/
+/*    display: block !important;*/
+/*}*/
+
+/*!* Տողերի ոճավորում *!*/
+/*.dropdown-menu li a {*/
+/*    display: flex; !* Flex-ի շնորհիվ տեքստը և սլաքը կլինեն իրար կողք *!*/
+/*    justify-content: space-between; !* Սլաքը կգնա աջ *!*/
+/*    align-items: center;*/
+/*    padding: 12px 20px;*/
+/*    color: #fff;*/
+/*    text-transform: uppercase;*/
+/*    font-size: 13px;*/
+/*    transition: all 0.3s ease;*/
+/*}*/
+
+/*.dropdown-menu li a i {*/
+/*    font-size: 10px; !* Սլաքի չափը *!*/
+/*    color: rgba(255, 255, 255, 0.6);*/
+/*}*/
+
+/*.dropdown-menu li a:hover {*/
+/*    background-color: rgba(255, 255, 255, 0.1);*/
+/*}*/
+
+/*!* 1. Թաքցնում ենք ենթամենյուն սկզբում *!*/
+/*.dropdown-menu {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    background-color: #3d1b21; !* Քո հեդերի գույնը *!*/
+/*    padding: 10px 0;*/
+/*    min-width: 150px;*/
+/*    z-index: 1000;*/
+/*}*/
+
+/*!* 2. Երբ մկնիկը պահում ենք «MAKEUP»-ի վրա, բացում ենք *!*/
+/*.dropdown:hover .dropdown-menu {*/
+/*    display: block;*/
+/*}*/
+
+/*!* 3. Ոճեր ենթամենյուի հղումների համար *!*/
+/*.dropdown-menu li a {*/
+/*    color: #fff;*/
+/*    padding: 8px 15px;*/
+/*    display: block;*/
+/*    text-decoration: none;*/
+/*    font-size: 14px;*/
+/*}*/
+
+/*.dropdown-menu li a:hover {*/
+/*    background-color: #5a2830;*/
+/*}*/
 /*.dropdown-menu {*/
 /*    display: none; !* Սկզբում թաքնված *!*/
 /*    position: absolute;*/
@@ -242,3 +415,27 @@
 /*    background-color: rgba(255, 255, 255, 0.1);*/
 /*    color: #fff;*/
 /*}*/
+.logo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 500;
+    letter-spacing: 6px;
+}
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.logo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    white-space: nowrap;
+}

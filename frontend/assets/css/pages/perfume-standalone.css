@@ -80,7 +80,7 @@ body {
 
 h4 { margin-bottom: 10px; font-size: 16px; color: #333; }
 
-input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px; }
+/*input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px; }*/
 
 .price-inputs { display: flex; gap: 10px; margin-bottom: 10px; }
 .price-inputs input { width: 50%; padding: 8px; border: 1px solid #ccc; }
@@ -108,4 +108,44 @@ label { font-size: 14px; color: #444; line-height: 2; cursor: pointer; }
 
 @keyframes fadeIn {
     to { opacity: 1; }
+}
+/* ===== Sidebar Search ===== */
+
+.brand-search {
+    width: 100%;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    background: #f6f6f6;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+.brand-search:hover,
+.brand-search:focus-within {
+    border-color: #330c13;
+    background: #fff;
+}
+
+.brand-search i {
+    color: #888;
+    margin-right: 12px;
+    font-size: 15px;
+}
+
+.brand-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+.brand-search input::placeholder {
+    color: #999;
 }
