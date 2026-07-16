@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/pages/perfume-standalone.css">
+    <link rel="stylesheet" href="../assets/css/pages/parfume.css">
 </head>
 <body>
 <div id="header-component"></div>
@@ -22,17 +23,14 @@
                 <input type="text" placeholder="Search by brands...">
             </div>
         </div>
-<!--        <div class="filter-box">-->
-<!--            <input type="text" placeholder="🔍 Search by brands...">-->
-<!--        </div>-->
 
         <div class="filter-box">
             <h4>Price:</h4>
             <div class="price-inputs">
-                <input type="number" value="0">
-                <input type="number" value="1000000">
+                <input type="number" id="minPrice" value="0">
+                <input type="number" id="maxPrice" value="1000000">
             </div>
-            <input type="range" class="price-range">
+            <input type="range" id="priceRange" class="price-range" min="0" max="1000000" value="0">
         </div>
 
         <div class="filter-box">
@@ -137,10 +135,34 @@
         </div>
 
         <div class="product-item" data-category="female">
-            <img src="../assets/images/perfumes/carolina.jpg" alt="Carolina Herrera">
+            <img src="../assets/images/perfumes/good.jpg" alt="Carolina Herrera">
             <h3>CAROLINA HERRERA</h3>
             <p>GOOD GIRL</p>
             <span class="price">41000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="male">
+            <img src="../assets/images/perfumes/black.jpg" alt="Carolina Herrera">
+            <h3>CAROLINA HERRERA</h3>
+            <p>BLACK</p>
+            <span class="price">41000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="male">
+            <img src="../assets/images/perfumes/man.png" alt="AMOUAGE">
+            <h3>AMOUAGE</h3>
+            <p>INTERLOUDE</p>
+            <span class="price">52000 ֏</span>
+            <button class="buy-btn">ADD TO CART</button>
+        </div>
+
+        <div class="product-item" data-category="male">
+            <img src="../assets/images/perfumes/monkey.jpg" alt="XERJOFF">
+            <h3>IOMMI</h3>
+            <p>MONKEY</p>
+            <span class="price">60000 ֏</span>
             <button class="buy-btn">ADD TO CART</button>
         </div>
     </main>

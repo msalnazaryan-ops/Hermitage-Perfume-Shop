@@ -80,8 +80,6 @@ body {
 
 h4 { margin-bottom: 10px; font-size: 16px; color: #333; }
 
-/*input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px; }*/
-
 .price-inputs { display: flex; gap: 10px; margin-bottom: 10px; }
 .price-inputs input { width: 50%; padding: 8px; border: 1px solid #ccc; }
 

@@ -310,111 +310,7 @@
 .sidebar-search:focus-within {
     background: rgba(255,255,255,.14);
 }
-/*.dropdown {*/
-/*    position: relative; !* Անհրաժեշտ է, որպեսզի absolute-ը աշխատի հենց այս կետի նկատմամբ *!*/
-/*}*/
-/*!* Դրոփդաունի ընդհանուր ոճ *!*/
-/*.dropdown-menu {*/
-/*    display: none;*/
-/*    position: absolute;*/
-/*    top: 100%;*/
-/*    left: 0;*/
-/*    background-color: var(--hermitage-nav-bg);*/
-/*    min-width: 220px;*/
-/*    padding: 10px 0;*/
-/*    z-index: 9999;*/
-/*    box-shadow: 0 10px 20px rgba(0,0,0,0.3);*/
-/*}*/
 
-/*.dropdown:hover .dropdown-menu {*/
-/*    display: block !important;*/
-/*}*/
-
-/*!* Տողերի ոճավորում *!*/
-/*.dropdown-menu li a {*/
-/*    display: flex; !* Flex-ի շնորհիվ տեքստը և սլաքը կլինեն իրար կողք *!*/
-/*    justify-content: space-between; !* Սլաքը կգնա աջ *!*/
-/*    align-items: center;*/
-/*    padding: 12px 20px;*/
-/*    color: #fff;*/
-/*    text-transform: uppercase;*/
-/*    font-size: 13px;*/
-/*    transition: all 0.3s ease;*/
-/*}*/
-
-/*.dropdown-menu li a i {*/
-/*    font-size: 10px; !* Սլաքի չափը *!*/
-/*    color: rgba(255, 255, 255, 0.6);*/
-/*}*/
-
-/*.dropdown-menu li a:hover {*/
-/*    background-color: rgba(255, 255, 255, 0.1);*/
-/*}*/
-
-/*!* 1. Թաքցնում ենք ենթամենյուն սկզբում *!*/
-/*.dropdown-menu {*/
-/*    display: none;*/
-/*    position: absolute;*/
-/*    background-color: #3d1b21; !* Քո հեդերի գույնը *!*/
-/*    padding: 10px 0;*/
-/*    min-width: 150px;*/
-/*    z-index: 1000;*/
-/*}*/
-
-/*!* 2. Երբ մկնիկը պահում ենք «MAKEUP»-ի վրա, բացում ենք *!*/
-/*.dropdown:hover .dropdown-menu {*/
-/*    display: block;*/
-/*}*/
-
-/*!* 3. Ոճեր ենթամենյուի հղումների համար *!*/
-/*.dropdown-menu li a {*/
-/*    color: #fff;*/
-/*    padding: 8px 15px;*/
-/*    display: block;*/
-/*    text-decoration: none;*/
-/*    font-size: 14px;*/
-/*}*/
-
-/*.dropdown-menu li a:hover {*/
-/*    background-color: #5a2830;*/
-/*}*/
-/*.dropdown-menu {*/
-/*    display: none; !* Սկզբում թաքնված *!*/
-/*    position: absolute;*/
-/*    top: 100%; !* Header-ից ներքև *!*/
-/*    left: 0;*/
-/*    background-color: var(--hermitage-nav-bg); !* Օգտագործիր քո փոփոխականը *!*/
-/*    min-width: 220px;*/
-/*    padding: 10px 0;*/
-/*    z-index: 9999; !* Որպեսզի լինի ամեն ինչի վերևում *!*/
-/*    box-shadow: 0 10px 20px rgba(0,0,0,0.3);*/
-/*}*/
-
-/* Մկնիկը վրան պահելիս */
-/*.dropdown:hover .dropdown-menu {*/
-/*    display: block !important; !* Ավելացրել եմ !important, որ հաստատ աշխատի *!*/
-/*}*/
-
-/* Դրոփդաունի կետերի ոճավորում */
-/*.dropdown-menu li {*/
-/*    display: block;*/
-/*    width: 100%;*/
-/*}*/
-
-/*.dropdown-menu li a {*/
-/*    display: block;*/
-/*    padding: 12px 20px;*/
-/*    color: var(--text-light);*/
-/*    text-transform: uppercase;*/
-/*    font-size: 13px;*/
-/*    letter-spacing: 1px;*/
-/*    transition: all 0.3s ease;*/
-/*}*/
-
-/*.dropdown-menu li a:hover {*/
-/*    background-color: rgba(255, 255, 255, 0.1);*/
-/*    color: #fff;*/
-/*}*/
 .logo a {
     color: #ffffff;
     text-decoration: none;
@@ -438,4 +334,38 @@
     font-weight: 500;
     letter-spacing: 6px;
     white-space: nowrap;
+}
+
+/* ================= SEARCH DROPDOWN ================= */
+
+.search-results-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,.18);
+}
+
+.search-result-item {
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    transition: .2s;
+    font-weight: 500;
+}
+
+.search-result-item:hover {
+    background: #f4f4f4;
+}
+
+.search-result-item.all-results {
+    color: #e53935;
+    font-weight: 700;
+    border-top: 1px solid #eee;
 }

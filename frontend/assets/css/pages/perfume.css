@@ -1,0 +1,52 @@
+/* Որոնման արդյունքների պատուհանի ոճավորում */
+.search-results-dropdown {
+    position: absolute;
+    top: 100%; /* Տեղակայվում է հենց որոնման դաշտի տակ */
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px; /* Կլորացված անկյուններ */
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Փափուկ ստվեր, որ տալիս է գեղեցիկ ծավալ */
+    margin-top: 5px;
+    padding: 10px 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Որոնման արդյունքի յուրաքանչյուր տող */
+.search-result-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+/* Մկնիկը տողի վրա պահելիս */
+.search-result-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* "All Results" հատուկ տողի ոճ */
+.search-result-item.all-results {
+    color: #ff0000;
+    font-weight: bold;
+    border-top: 1px solid #eee;
+    margin-top: 5px;
+}
+.search-results-dropdown{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:#fff;
+    z-index:9999;
+    border-radius:0 0 8px 8px;
+    overflow:hidden;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+.search-box{
+    position:relative;
+}

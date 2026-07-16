@@ -68,104 +68,125 @@ const translations = {
 };
 
 // ===================================================
+// SEARCH DATA
+// ===================================================
+const allPerfumes = [
+    { name: "Prada", url: "#" },
+    { name: "YSL", url: "#" },
+    { name: "Amouage", url: "#" },
+    { name: "Casamorati", url: "#" },
+    { name: "Ajmal", url: "#" },
+    { name: "Nina Ricci", url: "#" },
+    { name: "Dolce & Gabbana", url: "#" },
+    { name: "Clive Christian", url: "#" },
+    { name: "Carolina Herrera", url: "#" },
+    { name: "Bvlgari", url: "#" },
+    { name: "Lancome", url: "#" }
+];
+
+// ===================================================
 // 1. ԿՈՄՊՈՆԵՆՏՆԵՐԻ ԱՎՏՈՄԱՏ ԲԵՌՆՈՒՄ (FETCH COMPONENTS)
 // ===================================================
 document.addEventListener("DOMContentLoaded", async () => {
     const currentSavedLang = localStorage.getItem('selectedLang') || 'eng';
 
-    // 1. Բեռնում ենք Header-ը (Ավելացրել եմ '/' սկզբում)
+    // 1. Բեռնում ենք Header-ը
     const headerComponent = document.getElementById("header-component");
     if (headerComponent) {
         try {
             const response = await fetch("/components/header.html");
-            if (!response.ok) throw new Error("Header-ը չգտնվեց");
             const html = await response.text();
             headerComponent.innerHTML = html;
 
-            console.log("✅ Header-ը բեռնվեց");
-            // const logo = document.getElementById("logoHome");
-            //
-            // if (logo) {
-            //     logo.addEventListener("click", (e) => {
-            //         e.preventDefault();
-            //         window.location.href = "/";
-            //     });
-            // }
-            // const logo = document.getElementById("logoHome");
-            //
-            // if (logo) {
-            //     logo.addEventListener("click", (e) => {
-            //         e.preventDefault();
-            //         window.location.href = "․․/index.html";
-            //     });
-            // }
-            console.log("✅ Header-ը բեռնվեց");
-
-            // Միայն այստեղ ենք կանչում initSwipers, երբ header-ը պատրաստ է
-            // Եվ ավելացրել ենք ստուգում, որպեսզի սխալ չտա, եթե Swiper-ը չկա
-            if (typeof initSwipers === 'function') {
-                initSwipers();
-            }
-
+            if (typeof initSwipers === 'function') initSwipers();
             initLanguageDropdown();
-        } catch (error) {
-            console.error("Խնդիր Header-ը բեռնելիս:", error);
-        }
+        } catch (error) { console.error("Header load error:", error); }
     }
 
-    // 2. Բեռնում ենք Footer-ը (Ավելացրել եմ '/' սկզբում)
+    // --- Price Filter-ի լսողները տեղադրիր այստեղ (դուրս հանեցինք header-ի if-ից) ---
+    const minInput = document.getElementById('minPrice');
+    const maxInput = document.getElementById('maxPrice');
+    const priceRange = document.getElementById('priceRange');
+
+    if (minInput && maxInput && priceRange) {
+        priceRange.addEventListener('input', function() {
+            maxInput.value = this.value;
+            filterProductsByPrice(); // Սա կանչում է քո 7-րդ կետի ֆունկցիան
+        });
+        minInput.addEventListener('input', filterProductsByPrice);
+        maxInput.addEventListener('input', filterProductsByPrice);
+    }
+    // --------------------------------------------------------------------------
+
+    // 2. Footer և Auth Modal
     const footerComponent = document.getElementById("footer-component");
     if (footerComponent) {
         try {
             const response = await fetch("/components/footer.html");
             footerComponent.innerHTML = await response.text();
-            console.log("✅ Footer-ը բեռնվեց");
-        } catch (error) {
-            console.error("Խնդիր Footer-ը բեռնելիս:", error);
-        }
+        } catch (error) { console.error("Footer load error:", error); }
     }
 
-    // 3. Բեռնում ենք Auth Modal-ը (Ավելացրել եմ '/' սկզբում)
     const authModalComponent = document.getElementById("auth-modal-component");
     if (authModalComponent) {
         try {
             const response = await fetch("/components/auth-modal.html");
-            if (!response.ok) throw new Error("Auth Modal-ը չգտնվեց");
             authModalComponent.innerHTML = await response.text();
-            console.log("✅ Auth Modal-ը բեռնվեց");
-            if (typeof initAuthModal === 'function') {
-                initAuthModal();
-            }
-        } catch (error) {
-            console.error("Խնդիր Մոդալը բեռնելիս:", error);
-        }
+            if (typeof initAuthModal === 'function') initAuthModal();
+        } catch (error) { console.error("Auth Modal load error:", error); }
     }
-
+    initLiveSearch();
     applyTranslations(currentSavedLang);
 });
 // document.addEventListener("DOMContentLoaded", async () => {
 //     const currentSavedLang = localStorage.getItem('selectedLang') || 'eng';
 //
-//     // 1. Բեռնում ենք Header-ը
+//     // 1. Բեռնում ենք Header-ը (Ավելացրել եմ '/' սկզբում)
 //     const headerComponent = document.getElementById("header-component");
 //     if (headerComponent) {
 //         try {
-//             const response = await fetch("components/header.html");
+//             const response = await fetch("/components/header.html");
 //             if (!response.ok) throw new Error("Header-ը չգտնվեց");
-//             headerComponent.innerHTML = await response.text();
+//             const html = await response.text();
+//             headerComponent.innerHTML = html;
+//
 //             console.log("✅ Header-ը բեռնվեց");
-//             initSwipers();
+//
+//             console.log("✅ Header-ը բեռնվեց");
+//
+//             // Միայն այստեղ ենք կանչում initSwipers, երբ header-ը պատրաստ է
+//             // Եվ ավելացրել ենք ստուգում, որպեսզի սխալ չտա, եթե Swiper-ը չկա
+//             if (typeof initSwipers === 'function') {
+//                 initSwipers();
+//             }
+//
 //             initLanguageDropdown();
 //         } catch (error) {
 //             console.error("Խնդիր Header-ը բեռնելիս:", error);
 //         }
+//         // Price slider event listeners
+//         const minInput = document.getElementById('minPrice');
+//         const maxInput = document.getElementById('maxPrice');
+//         const priceRange = document.getElementById('priceRange');
+//
+//         if (minInput && maxInput && priceRange) {
+//             // Երբ շարժում ենք կապույտ գիծը
+//             priceRange.addEventListener('input', function() {
+//                 maxInput.value = this.value;
+//                 filterProductsByPrice();
+//             });
+//
+//             // Երբ փոխում ենք վանդակների թվերը
+//             minInput.addEventListener('input', filterProductsByPrice);
+//             maxInput.addEventListener('input', filterProductsByPrice);
+//         }
 //     }
 //
-//     // 2. Բեռնում ենք Footer-ը
+//     // 2. Բեռնում ենք Footer-ը (Ավելացրել եմ '/' սկզբում)
 //     const footerComponent = document.getElementById("footer-component");
 //     if (footerComponent) {
 //         try {
-//             const response = await fetch("components/footer.html");
+//             const response = await fetch("/components/footer.html");
 //             footerComponent.innerHTML = await response.text();
 //             console.log("✅ Footer-ը բեռնվեց");
 //         } catch (error) {
@@ -173,15 +194,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 //         }
 //     }
 //
-//     // 3. Բեռնում ենք Auth Modal-ը
+//     // 3. Բեռնում ենք Auth Modal-ը (Ավելացրել եմ '/' սկզբում)
 //     const authModalComponent = document.getElementById("auth-modal-component");
 //     if (authModalComponent) {
 //         try {
-//             const response = await fetch("components/auth-modal.html");
+//             const response = await fetch("/components/auth-modal.html");
 //             if (!response.ok) throw new Error("Auth Modal-ը չգտնվեց");
 //             authModalComponent.innerHTML = await response.text();
 //             console.log("✅ Auth Modal-ը բեռնվեց");
-//             initAuthModal();
+//             if (typeof initAuthModal === 'function') {
+//                 initAuthModal();
+//             }
 //         } catch (error) {
 //             console.error("Խնդիր Մոդալը բեռնելիս:", error);
 //         }
@@ -299,9 +322,6 @@ function initAuthModal() {
 // ===================================================
 // 3. SWIPER SLIDERS INITIALIZATION
 // ===================================================
-// ===================================================
-// 3. SWIPER SLIDERS INITIALIZATION (Ուղղված տարբերակ)
-// ===================================================
 function initSwipers() {
     // 1. Ստուգում ենք՝ արդյո՞ք Swiper գրադարանը հասանելի է
     if (typeof Swiper === 'undefined') {
@@ -340,61 +360,7 @@ function initSwipers() {
         console.log("✅ Products Swiper-ը հաջողությամբ ակտիվացավ");
     }
 }
-// function initSwipers() {
-//     // Ստուգում ենք՝ արդյո՞ք էջում կա Swiper-ի գրադարանը, նոր նոր աշխատում ենք
-//     if (typeof Swiper === 'undefined') {
-//         console.warn("⚠️ Swiper գրադարանը բեռնված չէ");
-//         return;
-//     }
-//
-//     if (document.querySelector('.heroSwiper')) {
-//         new Swiper(".heroSwiper", {
-//             loop: true,
-//             effect: "slide",
-//             speed: 1800,
-//             autoplay: { delay: 3000, disableOnInteraction: false },
-//             pagination: { el: ".swiper-pagination", clickable: true },
-//             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-//         });
-//     }
-//     if (document.querySelector('.productsSwiper')) {
-//         new Swiper(".productsSwiper", {
-//             slidesPerView: 4,
-//             spaceBetween: 30,
-//             navigation: { nextEl: ".prod-next", prevEl: ".prod-prev" },
-//             breakpoints: {
-//                 320: { slidesPerView: 1, spaceBetween: 10 },
-//                 768: { slidesPerView: 2, spaceBetween: 20 },
-//                 1024: { slidesPerView: 4, spaceBetween: 30 }
-//             }
-//         });
-//     }
-// }
-// function initSwipers() {
-//
-//     if (document.querySelector('.heroSwiper')) {
-//         new Swiper(".heroSwiper", {
-//             loop: true,
-//             effect: "slide",
-//             speed: 1800,
-//             autoplay: { delay: 3000, disableOnInteraction: false },
-//             pagination: { el: ".swiper-pagination", clickable: true },
-//             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-//         });
-//     }
-//     if (document.querySelector('.productsSwiper')) {
-//         new Swiper(".productsSwiper", {
-//             slidesPerView: 4,
-//             spaceBetween: 30,
-//             navigation: { nextEl: ".prod-next", prevEl: ".prod-prev" },
-//             breakpoints: {
-//                 320: { slidesPerView: 1, spaceBetween: 10 },
-//                 768: { slidesPerView: 2, spaceBetween: 20 },
-//                 1024: { slidesPerView: 4, spaceBetween: 30 }
-//             }
-//         });
-//     }
-// }
+
 
 // ===================================================
 // 4. LANGUAGE DROPDOWN
@@ -496,5 +462,101 @@ function filterProducts() {
             // Եթե ընտրված է, ցույց ենք տալիս միայն համապատասխանները
             product.style.display = checkedValues.includes(category) ? 'block' : 'none';
         }
+    });
+}
+// ===================================================
+// 7. PRICE FILTER LOGIC
+// ===================================================
+function filterProductsByPrice() {
+    const min = parseInt(document.getElementById('minPrice').value) || 0;
+    const max = parseInt(document.getElementById('maxPrice').value) || 1000000;
+
+    document.querySelectorAll('.product-item').forEach(p => {
+        const price = parseInt(p.getAttribute('data-price')) || 0;
+
+        // Ստուգում ենք թե՛ գինը, թե՛ gender-ի ֆիլտրը (միասին)
+        const genderChecked = Array.from(document.querySelectorAll('.gender-filter .filter-input:checked')).map(c => c.value);
+        const category = p.getAttribute('data-category');
+
+        const priceMatch = (price >= min && price <= max);
+        const genderMatch = (genderChecked.length === 0 || genderChecked.includes(category));
+
+        p.style.display = (priceMatch && genderMatch) ? 'block' : 'none';
+    });
+}
+
+// ===================================================
+// 8. LIVE SEARCH LOGIC
+// ===================================================
+function initLiveSearch() {
+    const searchBoxes = document.querySelectorAll('.search-box');
+
+    searchBoxes.forEach(box => {
+        const input = box.querySelector('input');
+        if (!input) return;
+
+        const resultsContainer = document.createElement('div');
+        resultsContainer.className = 'search-results-dropdown';
+        box.appendChild(resultsContainer);
+
+        input.addEventListener('input', (e) => {
+            const query = e.target.value.trim().toLowerCase();
+
+            resultsContainer.innerHTML = '';
+
+            if (!query) {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            const filtered = allPerfumes.filter(item =>
+                item.name.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            filtered.forEach(itemData => {
+                const item = document.createElement('div');
+
+                item.className = 'search-result-item';
+
+                item.innerHTML = `
+                    <span>${itemData.name}</span>
+                `;
+
+                item.addEventListener('click', () => {
+                    input.value = itemData.name;
+                    resultsContainer.innerHTML = '';
+                    resultsContainer.style.display = 'none';
+                });
+
+                resultsContainer.appendChild(item);
+            });
+
+            const allResults = document.createElement('div');
+
+            allResults.className = 'search-result-item all-results';
+
+            allResults.textContent = 'All Results';
+
+            allResults.addEventListener('click', () => {
+                window.location.href =
+                    '/pages/perfume.html?search=' +
+                    encodeURIComponent(query);
+            });
+
+            resultsContainer.appendChild(allResults);
+
+            resultsContainer.style.display = 'block';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!box.contains(e.target)) {
+                resultsContainer.style.display = 'none';
+            }
+        });
     });
 }

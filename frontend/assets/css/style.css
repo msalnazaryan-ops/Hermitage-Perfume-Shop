@@ -50,43 +50,6 @@ ul {
     margin: 0 auto;
 }
 
-/* --- DROP-DOWN STYLES (Ավելացրու սա style.css-ի վերջում) --- */
-/* Ավելացնում ենք հավելյալ պաշտպանություն, որ մենյուն միշտ երևա */
-/*.dropdown {*/
-/*    position: relative !important;*/
-/*}*/
-
-/*.dropdown:hover .dropdown-menu {*/
-/*    display: block !important;*/
-/*    opacity: 1 !important;*/
-/*    visibility: visible !important;*/
-/*}*/
-
-/*.dropdown-menu {*/
-/*    display: none !important;*/
-/*    position: absolute !important;*/
-/*    top: 100% !important;*/
-/*    left: 0 !important;*/
-/*    background-color: #3d1c21 !important;*/
-/*    min-width: 250px !important;*/
-/*    z-index: 99999 !important; !* Ավելի բարձր ինդեքս *!*/
-/*    padding: 10px 0 !important;*/
-/*    list-style: none !important;*/
-/*    transition: none !important;*/
-/*}*/
-
-/*.dropdown-menu li a {*/
-/*    display: block !important;*/
-/*    padding: 12px 20px !important;*/
-/*    color: #fff !important;*/
-/*    text-transform: uppercase !important;*/
-/*    text-decoration: none !important;*/
-/*    font-size: 13px !important;*/
-/*}*/
-
-/*.dropdown-menu li a:hover {*/
-/*    background-color: #55282e !important;*/
-/*}*/
 /* Dropdown-ի կայուն տարբերակ */
 .dropdown { position: relative; }
 .dropdown-menu {
@@ -108,8 +71,6 @@ ul {
     text-decoration: none;
     font-size: 13px;
 }
-
-
 
 .top-container {
     position: relative;
