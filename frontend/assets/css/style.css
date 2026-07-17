@@ -33,7 +33,10 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-light);
     overflow-x: hidden;
+    padding-top: 120px;
 }
+
+
 
 a {
     text-decoration: none;

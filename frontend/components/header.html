@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <header class="header">
@@ -18,8 +17,8 @@
                 <a href="#" class="tool-link">
                     <i class="fa-regular fa-user"></i> Login
                 </a>
-                <a href="/pages/cart.html" class="tool-link cart-link">
-                    <i class="fa-solid fa-bag-shopping"></i> <span>0</span>
+                <a href="javascript:void(0)" class="tool-link cart-link">
+                    <i class="fa-solid fa-bag-shopping"></i> <span class="cart-count">0</span>
                 </a>
 
                 <div class="lang-dropdown">
@@ -72,3 +71,14 @@
         </div>
     </nav>
 </header>
+
+<!-- Cart Modal (Զամբյուղի պատուհան) -->
+<div class="cart-modal" style="display:none; position:fixed; right:0; top:0; width:400px; height:100%; background:white; z-index:9999; box-shadow:-2px 0 10px rgba(0,0,0,0.1); padding:20px; overflow-y:auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h2 style="margin:0;">YOUR CART</h2>
+        <button class="close-modal-btn" onclick="document.querySelector('.cart-modal').style.display='none'" style="border:none; background:none; cursor:pointer; font-size:24px;">X</button>
+    </div>
+    <div class="cart-items-list">
+        <!-- Այստեղ JavaScript-ի միջոցով ավտոմատ կավելանան ապրանքները -->
+    </div>
+</div>

@@ -560,3 +560,352 @@ function initLiveSearch() {
         });
     });
 }
+
+// ===================================================
+// 1. ԶԱՄԲՅՈՒՂԻ ՏՎՅԱԼՆԵՐԻ ՊԱՀՊԱՆՈՒՄ ԵՎ ՖՈՒՆԿՑԻԱՆԵՐ
+// ===================================================
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function updateCartIcon() {
+    const cartCount = document.querySelector('.cart-count') || document.querySelector('.cart-link span');
+    if(cartCount) cartCount.textContent = cart.length;
+}
+
+// Ավելացնել զամբյուղին
+function addToCart(product) {
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartIcon();
+
+    // Ստուգում ենք՝ արդյո՞ք մոդալը բաց է, որպեսզի ավտոմատ թարմացնենք
+    const modal = document.querySelector('.cart-modal');
+    if (modal && modal.style.display === 'block') {
+        openCartModal();
+    } else {
+        alert(product.name + ' added to cart!');
+    }
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartIcon();
+    openCartModal();
+}
+
+function openCartModal() {
+    const modal = document.querySelector('.cart-modal');
+    if (!modal) return;
+
+    // Մոդալի տեղադրությունը և չափերը
+    modal.style.position = 'fixed';
+    modal.style.top = '20px';
+    modal.style.right = '20px'; // Սկզբնական դիրքը
+    modal.style.width = '550px'; // Ավելի լայն դարձրինք (400-ից 550)
+    modal.style.maxWidth = '90vw'; // Էկրանի լայնության 90%-ը
+
+    // Դիզայն
+    modal.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+    modal.style.backdropFilter = 'blur(15px)';
+    modal.style.padding = '50px'; // Ավելի մեծ padding
+    modal.style.borderRadius = '30px';
+    modal.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)'; // Ստվեր՝ ավելի ծավալուն տեսքի համար
+    modal.style.color = 'black';
+    modal.style.zIndex = '1000'; // Համոզվելու համար, որ ամեն ինչի վերևում է
+
+    const list = modal.querySelector('.cart-items-list');
+    list.innerHTML = '';
+
+    if (cart.length === 0) {
+        list.innerHTML = '<p style="color:black; text-align:center; padding:40px;">YOUR CART IS EMPTY.</p>';
+    } else {
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const priceValue = parseInt(item.price.replace(/[^\d]/g, '')) || 0;
+            total += priceValue;
+
+            list.innerHTML += `
+                <div class="cart-item" style="display:flex; align-items:center; border-bottom:1px solid rgba(0,0,0,0.1); padding:25px 0; color:black;">
+                    <img src="${item.img || ''}" style="width:80px; height:80px; object-fit:cover; border-radius:15px; flex-shrink:0;">
+                    
+                    <div style="flex-grow:1; margin:0 30px; color:black; font-weight:600; font-size:1.1em;">
+                        ${item.name}
+                    </div>
+                    
+                    <div style="width: 70px; text-align: center; color:black;">1 pcs</div>
+                    
+                    <div style="width: 130px; text-align: right; color:black; font-weight:bold; font-size:1.1em;">
+                        ${item.price}
+                    </div>
+                    
+                    <button onclick="removeFromCart(${index})" style="background:none; border:none; cursor:pointer; color:black; margin-left:30px; font-size:1.5em;">🗑️</button>
+                </div>
+            `;
+        });
+
+        list.innerHTML += `
+            <div class="cart-total" style="padding:30px 0; font-weight:bold; display:flex; justify-content:space-between; color:black; font-size:1.5em;">
+                <span>Total:</span>
+                <span>${total} ֏</span>
+            </div>
+            <button onclick="window.location.href='/pages/checkout.html'" style="background:black; color:white; border:none; padding:20px; width:100%; cursor:pointer; border-radius:15px; font-weight:bold; font-size:1.1em;">
+                CHECKOUT
+            </button>
+        `;
+    }
+    modal.style.display = 'block';
+}
+
+function clearCart() {
+    cart = [];
+    localStorage.removeItem('cart');
+    updateCartIcon();
+    openCartModal();
+}
+
+// ===================================================
+// 2. ԻՍԿԱԿԱՆ ԻԼՈԳԻԿԱ (Event Listeners)
+// ===================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartIcon();
+});
+
+document.addEventListener('click', function(e) {
+    // ՈՒՂՂՎԱԾ՝ ավելացվել է նկարը վերցնելու տրամաբանությունը
+    if (e.target.classList.contains('buy-btn') || e.target.classList.contains('add-to-cart-btn')) {
+        e.preventDefault();
+
+        // Գտնում ենք ապրանքի կոնտեյները
+        const item = e.target.closest('.product-item') || e.target.closest('.product-card');
+
+        if (item) {
+            // Անունը գտնելու համար փնտրում ենք h3
+            const nameEl = item.querySelector('h3');
+            const name = nameEl ? nameEl.innerText.trim() : 'Product';
+
+            // Գինը գտնելու համար փնտրում ենք .product-price դասը
+            // Գինը գտնելու համար փնտրում ենք մի քանի հնարավոր տարբերակ
+            const priceEl = item.querySelector('.product-price') ||
+                item.querySelector('.price') ||
+                item.querySelector('.price-tag');
+
+            const price = priceEl ? priceEl.innerText.trim() : '0 ֏';
+
+            const img = item.querySelector('img') ? item.querySelector('img').src : '';
+
+            addToCart({ name, price, img });
+        }
+    }
+
+    // Զամբյուղի պատկերակի վրա սեղմելիս
+    if (e.target.closest('.cart-link')) {
+        e.preventDefault();
+        openCartModal();
+    }
+});
+// // ===================================================
+// // 1. ԶԱՄԲՅՈՒՂԻ ՏՎՅԱԼՆԵՐԻ ՊԱՀՊԱՆՈՒՄ ԵՎ ՖՈՒՆԿՑԻԱՆԵՐ
+// // ===================================================
+//
+// let cart = JSON.parse(localStorage.getItem('cart')) || [];
+//
+// function updateCartIcon() {
+//     const cartCount = document.querySelector('.cart-count') || document.querySelector('.cart-link span');
+//     if(cartCount) cartCount.textContent = cart.length;
+// }
+//
+// // Ավելացնել զամբյուղին (ՈՒՂՂՎԱԾ՝ ստանում է նաև img)
+// // function addToCart(product) {
+// //     cart.push(product);
+// //     localStorage.setItem('cart', JSON.stringify(cart));
+// //     updateCartIcon();
+// //     alert(product.name + ' added to cart!');
+// // }
+// // Ավելացնել զամբյուղին (ՈՒՂՂՎԱԾ՝ ավտոմատ թարմացումով)
+// function addToCart(product) {
+//     cart.push(product);
+//     localStorage.setItem('cart', JSON.stringify(cart));
+//     updateCartIcon();
+//
+//     // Ստուգում ենք՝ արդյո՞ք մոդալը բաց է
+//     const modal = document.querySelector('.cart-modal');
+//     if (modal && modal.style.display === 'block') {
+//         openCartModal(); // Եթե բաց է, վերաբեռնում ենք մոդալի պարունակությունը
+//     } else {
+//         alert(product.name + ' added to cart!'); // Եթե փակ է, թողնում ենք alert-ը
+//     }
+// }
+//
+// function removeFromCart(index) {
+//     cart.splice(index, 1);
+//     localStorage.setItem('cart', JSON.stringify(cart));
+//     updateCartIcon();
+//     openCartModal();
+// }
+//
+// function openCartModal() {
+//     const modal = document.querySelector('.cart-modal');
+//     if (!modal) return;
+//
+//     const list = modal.querySelector('.cart-items-list');
+//     list.innerHTML = '';
+//
+//     if (cart.length === 0) {
+//         list.innerHTML = '<p style="text-align:center; padding:20px;">YOUR CART IS EMPTY.</p>';
+//     } else {
+//         let total = 0;
+//
+//         cart.forEach((item, index) => {
+//             const priceValue = parseInt(item.price.replace(/[^\d]/g, '')) || 0;
+//             total += priceValue;
+//
+//             list.innerHTML += `
+//                 <div class="cart-item" style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #ccc; padding:10px 0;">
+//                     <img src="${item.img || ''}" style="width:50px; height:50px; object-fit:cover; border:1px solid #eee;">
+//                     <div style="flex-grow:1; margin:0 10px;">${item.name}</div>
+//                     <span>1 pcs</span>
+//                     <span style="margin:0 15px;">${item.price}</span>
+//                     <button onclick="removeFromCart(${index})" style="background:none; border:none; cursor:pointer;">🗑️</button>
+//                 </div>
+//             `;
+//         });
+//
+//         list.innerHTML += `
+//             <div class="cart-total" style="padding:15px 0; font-weight:bold; display:flex; justify-content:space-between;">
+//                 <span>Total:</span>
+//                 <span>${total} ֏</span>
+//             </div>
+//             <button onclick="window.location.href='/pages/checkout.html'" style="background:black; color:white; border:none; padding:12px; width:100%; cursor:pointer;">
+//                 CHECKOUT
+//             </button>
+//         `;
+//     }
+//     modal.style.display = 'block';
+// }
+//
+// function clearCart() {
+//     cart = [];
+//     localStorage.removeItem('cart');
+//     updateCartIcon();
+//     openCartModal();
+// }
+//
+// // ===================================================
+// // 2. ԻՍԿԱԿԱՆ ԻԼՈԳԻԿԱ (Event Listeners)
+// // ===================================================
+//
+// document.addEventListener('DOMContentLoaded', () => {
+//     updateCartIcon();
+// });
+//
+// document.addEventListener('click', function(e) {
+//     // ՈՒՂՂՎԱԾ՝ ավելացվել է նկարը վերցնելու տրամաբանությունը
+//     if (e.target.classList.contains('buy-btn') || e.target.classList.contains('add-to-cart-btn')) {
+//         e.preventDefault();
+// // Գտնում ենք ապրանքի կոնտեյները
+//         const item = e.target.closest('.product-item') || e.target.closest('.product-card');
+//
+//         if (item) {
+//             // Անունը գտնելու համար փնտրում ենք անմիջապես h3-ի մեջ եղած տեքստը
+//             const nameEl = item.querySelector('h3');
+//             const name = nameEl ? nameEl.innerText.trim() : 'Product';
+//
+//             // Գինը գտնելու համար փնտրում ենք .product-price դասը
+//             const priceEl = item.querySelector('.product-price');
+//             const price = priceEl ? priceEl.innerText.trim() : '0 ֏';
+//
+//             const img = item.querySelector('img') ? item.querySelector('img').src : '';
+//
+//             // Ստուգում՝ արդյո՞ք ստացել ենք իմաստալից տեքստ
+//             console.log("Extracted Name:", name);
+//             console.log("Extracted Price:", price);
+//
+//             addToCart({ name, price, img });
+//         }
+//         // const item = e.target.closest('.product-item') || e.target.closest('.product-card');
+//         //
+//         // if (item) {
+//         //     const name = item.querySelector('h3') ? item.querySelector('h3').innerText : 'Product';
+//         //     const price = item.querySelector('.price') ? item.querySelector('.price').innerText :
+//         //         (item.querySelector('.product-price') ? item.querySelector('.product-price').innerText : '0 ֏');
+//         //
+//         //     // Սա է կարևոր տողը. վերցնում ենք նկարի src-ը
+//         //     const img = item.querySelector('img') ? item.querySelector('img').src : '';
+//         //
+//         //     addToCart({ name, price, img });
+//         // }
+//     }
+//
+//     if (e.target.closest('.cart-link')) {
+//         e.preventDefault();
+//         openCartModal();
+//     }
+// });
+// // frontend/assets/js/app.js
+//
+// // 1. Զամբյուղի տվյալների պահպանումը
+// let cart = JSON.parse(localStorage.getItem('cart')) || []; // Պահպանում ենք localStorage-ում, որ էջը թարմացնելիս չջնջվի
+//
+// // 2. Զամբյուղի թարմացում
+// function updateCartIcon() {
+//     const cartCount = document.querySelector('.cart-count');
+//     if(cartCount) cartCount.textContent = cart.length;
+// }
+//
+// // 3. Ավելացնել զամբյուղին
+// function addToCart(product) {
+//     cart.push(product);
+//     localStorage.setItem('cart', JSON.stringify(cart)); // Պահպանում ենք
+//     updateCartIcon();
+//     alert('Added to cart!');
+// }
+//
+// // 4. Ջնջել զամբյուղից
+// function removeFromCart(index) {
+//     cart.splice(index, 1);
+//     localStorage.setItem('cart', JSON.stringify(cart)); // Թարմացնում ենք
+//     updateCartIcon();
+//     openCartModal(); // Բացում ենք՝ թարմացված վիճակը ցույց տալու համար
+// }
+//
+// // 5. Մոդալի բացում
+// function openCartModal() {
+//     const modal = document.querySelector('.cart-modal');
+//     if (!modal) return;
+//
+//     const list = modal.querySelector('.cart-items-list');
+//     list.innerHTML = '';
+//
+//     if (cart.length === 0) {
+//         list.innerHTML = '<p>YOUR CART IS EMPTY.</p>';
+//     } else {
+//         cart.forEach((item, index) => {
+//             list.innerHTML += `
+//                 <div class="cart-item">
+//                     <span>${item.name}</span>
+//                     <span>1 pcs</span>
+//                     <span>${item.price} ֏</span>
+//                     <button onclick="removeFromCart(${index})">🗑️</button>
+//                 </div>
+//             `;
+//         });
+//     }
+//     modal.style.display = 'block';
+// }
+//
+// // 6. Նախնական թարմացում էջը բեռնվելիս
+// document.addEventListener('DOMContentLoaded', updateCartIcon);
+// // ավելացրեք սա app.js-ի վերջում
+// document.addEventListener('click', function(e) {
+//     if (e.target.classList.contains('buy-btn')) {
+//         const item = e.target.closest('.product-item');
+//         const name = item.querySelector('h3').innerText;
+//         const price = item.querySelector('.price').innerText;
+//
+//         // Ավելացնում ենք զամբյուղ
+//         addToCart({ name, price });
+//     }
+// });
