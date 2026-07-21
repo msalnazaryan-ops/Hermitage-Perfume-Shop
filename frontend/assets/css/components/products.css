@@ -166,22 +166,22 @@
     z-index: 5;
 }
 
-.wishlist-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 18px;
-    color: #ccc;
-    cursor: pointer;
-    transition: var(--transition);
-    z-index: 5;
-}
+/*.wishlist-btn {*/
+/*    position: absolute;*/
+/*    top: 15px;*/
+/*    right: 15px;*/
+/*    background: none;*/
+/*    border: none;*/
+/*    font-size: 18px;*/
+/*    color: #ccc;*/
+/*    cursor: pointer;*/
+/*    transition: var(--transition);*/
+/*    z-index: 5;*/
+/*}*/
 
-.wishlist-btn:hover {
-    color: #e74c3c;
-}
+/*.wishlist-btn:hover {*/
+/*    color: #e74c3c;*/
+/*}*/
 
 .product-img {
     width: 100%;
@@ -404,4 +404,185 @@
 
 .blog-divider {
     margin-top: 20px;
+}
+
+/*նոր*/
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: #fff;
+    color: #333;
+}
+
+/* Վերևի < BACK կոճակը */
+.back-link {
+    display: inline-block;
+    padding: 30px 0 0 50px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.back-link:hover {
+    color: #b12704;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0 40px 0;
+}
+
+.product-page-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 0 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* Ձախ կողմի փոքր նկարներ և հիմնական նկար */
+.images-container {
+    display: flex;
+    gap: 20px;
+}
+
+.thumbnails-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 75px;
+    border: 1px solid #ddd;
+    object-fit: cover;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.thumbnail.active {
+    border-color: #3498db;
+}
+
+.product-image-section img {
+    width: 350px;
+    height: 420px;
+    object-fit: contain;
+    border: 1px solid #eee;
+    padding: 10px;
+}
+
+/* Աջ կողմի տեքստային հատված */
+.product-info-section {
+    flex-grow: 1;
+}
+
+.product-info-section h1 {
+    font-size: 28px;
+    margin: 0 0 5px 0;
+    font-weight: normal;
+    color: #222;
+}
+
+.product-subtitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.price-box {
+    font-size: 14px;
+    color: #b12704;
+    margin: 20px 0;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.info-row {
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.info-row span {
+    color: #555;
+}
+
+.size-box {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    background: #e5e5e5;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.fragrance-notes {
+    margin-top: 25px;
+}
+
+.fragrance-notes h3 {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.fragrance-notes ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.fragrance-notes li {
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Ներքևի սրտիկ և share բաժին */
+.bottom-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 60px auto 30px auto;
+    padding: 0 50px;
+}
+
+.share-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.share-icon {
+    width: 24px;
+    height: 24px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.wishlist-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #777;
+}
+
+.wishlist-btn:hover {
+    color: #b12704;
 }

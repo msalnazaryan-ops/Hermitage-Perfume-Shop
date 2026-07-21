@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Product Details</title>
-    <style>
-        body { font-family: 'Arial', sans-serif; }
-        .product-page-wrapper {
-            display: flex;
-            gap: 60px;
-            padding: 50px;
-            max-width: 1000px;
-            margin: 50px auto;
-            background: #fff;
-            border-radius: 8px;
-            align-items: flex-start;
-        }
-        .product-image-section img {
-            width: 100%;
-            max-width: 350px;
-            border: 1px solid #ddd;
-        }
-        .product-info-section h1 { font-size: 32px; margin: 0 0 10px 0; color: #333; }
-        .price-box { font-size: 22px; color: #b12704; margin: 20px 0; font-weight: bold; }
-        .fragrance-notes h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
-        .fragrance-notes ul { list-style: none; padding: 0; }
-        .fragrance-notes li { margin-bottom: 8px; color: #555; }
-    </style>
+    <!-- Միացնում ենք առանձին CSS ֆայլը (ուղին կարող ես հարմարեցնել ըստ քո ֆայլային կառուցվածքի) -->
+    <link rel="stylesheet" href="../assets/css/components/products.css">
 </head>
 <body>
 
+<!-- Վերևի BACK հղումը -->
+<a href="javascript:history.back()" class="back-link">&lt; BACK</a>
+<hr class="divider">
+
 <div class="product-page-wrapper">
-    <div class="product-image-section">
-        <img id="product-image" src="" alt="Product Image">
+    <!-- Ձախ կողմը՝ նկարներ -->
+    <div class="images-container">
+        <div class="thumbnails-column">
+            <img id="thumb-1" class="thumbnail active" src="" alt="Thumbnail">
+            <img id="thumb-2" class="thumbnail" src="" alt="Thumbnail">
+        </div>
+        <div class="product-image-section">
+            <img id="product-image" src="" alt="Product Image">
+        </div>
     </div>
 
+    <!-- Աջ կողմը՝ տեղեկատվություն -->
     <div class="product-info-section">
-        <h1 id="product-name">Loading...</h1>
-        <div class="price-box">PRICE: <span id="product-price"></span> ֏</div>
-        <p><strong>GENDER:</strong> <span id="product-gender"></span></p>
+        <h1 id="product-brand">Loading...</h1>
+        <div class="product-subtitle" id="product-name"></div>
+
+        <div class="price-box">REQUEST PRICE</div>
+
+        <div class="info-row">
+            <strong>GENDER:</strong> <span id="product-gender"></span>
+        </div>
+
+        <div class="info-row">
+            <strong>SIZE:</strong> <span class="size-box">100.00 ml</span>
+        </div>
 
         <div class="fragrance-notes">
             <h3>FRAGRANCE NOTES:</h3>
@@ -46,50 +46,221 @@
     </div>
 </div>
 
+<!-- Ներքևի մաս՝ Share և Like -->
+<div class="bottom-actions">
+    <div class="share-section">
+        <span>SHARE</span>
+        <a href="#" class="share-icon">f</a>
+    </div>
+    <button class="wishlist-btn" title="Add to Wishlist">♡</button>
+</div>
+
 <script>
+    const perfumeDatabase = {
+        "Prada": {
+            name: "Prada",
+            brand: "Prada",
+            price: "45000",
+            gender: "Female",
+            image: "/assets/images/perfumes/Prada.jpg",
+            notes: ["Iris", "Patchouli", "Bergamot"]
+        },
+        "Ajmal": {
+            name: "Ajmal",
+            brand: "Ajmal",
+            price: "52000",
+            gender: "Unisex",
+            image: "/assets/images/perfumes/AJMAL.png",
+            notes: ["Amber", "Rose", "Musk"]
+        },
+        "Lancome": {
+            name: "Idôle Eau De Parfum",
+            brand: "Lancome",
+            price: "37500",
+            gender: "Female",
+            image: "/assets/images/perfumes/Lancome.jpg",
+            notes: ["Rose", "Jasmine", "White Musk"]
+        },
+        "Bvlgari": {
+            name: "Bvlgari",
+            brand: "Bvlgari",
+            price: "48000",
+            gender: "Unisex",
+            image: "/assets/images/perfumes/Bvlgari.jpg",
+            notes: ["Tea", "Amber", "Musk"]
+        },
+        "Clive Christian": {
+            name: "Clive Christian",
+            brand: "Clive Christian",
+            price: "120000",
+            gender: "Unisex",
+            image: "/assets/images/perfumes/Clive Christian.jpg",
+            notes: ["Woody Notes", "Floral Notes", "Vanilla"]
+        },
+        "Nina Ricci": {
+            name: "Nina Ricci",
+            brand: "Nina Ricci",
+            price: "41000",
+            gender: "Female",
+            image: "/assets/images/perfumes/Nina Ricci.jpg",
+            notes: ["Lemon", "Apple", "Praline"]
+        },
+        "Casamorati": {
+            name: "Casamorati",
+            brand: "Casamorati",
+            price: "85000",
+            gender: "Unisex",
+            image: "/assets/images/perfumes/Casamorati.jpg",
+            notes: ["Caramel", "Citrus", "White Musk"]
+        },
+        "Dolce & Gabbana": {
+            name: "Dolce & Gabbana",
+            brand: "Dolce & Gabbana",
+            price: "46000",
+            gender: "Female",
+            image: "/assets/images/perfumes/Dolce Gabbana.jpg",
+            notes: ["Bellflower", "Bamboo", "Jasmine"]
+        },
+        "Carolina Herrera": {
+            name: "Carolina Herrera",
+            brand: "Carolina Herrera",
+            price: "53000",
+            gender: "Female",
+            image: "/assets/images/perfumes/Carolina Herrera.jpg",
+            notes: ["Tuberose", "Jasmine", "Tonka Bean"]
+        }
+    };
+
     document.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
         const productName = params.get('name');
 
-        if (productName) {
-            // Հիմնական fetch-ը
-            fetch(`/api/get-perfume-details?name=${encodeURIComponent(productName)}`)
-                .then(response => {
-                    if (!response.ok) throw new Error("Product not found");
-                    return response.json();
-                })
-                .then(data => {
-                    // 1. Անունը թարմացնել
-                    document.getElementById('product-name').textContent = data.name;
+        if (productName && perfumeDatabase[productName]) {
+            const data = perfumeDatabase[productName];
 
-                    // 2. Գինը և սեռը
-                    document.getElementById('product-price').textContent = data.price;
-                    document.getElementById('product-gender').textContent = data.gender;
+            document.getElementById('product-brand').textContent = data.brand || data.name;
+            document.getElementById('product-name').textContent = data.name;
+            document.getElementById('product-gender').textContent = data.gender;
 
-                    // 3. Նկարը (data.image-ը արդեն ունի / սկզբում, ուստի ուղղակի վերագրում ենք)
-                    const imgElement = document.getElementById('product-image');
-                    imgElement.src = data.image;
-                    imgElement.alt = data.name;
+            const imgElement = document.getElementById('product-image');
+            imgElement.src = data.image;
+            imgElement.alt = data.name;
 
-                    // 4. Նշումները (Notes)
-                    const notesList = document.getElementById('product-notes');
-                    notesList.innerHTML = ""; // Մաքրում ենք "Loading..."-ը
-                    if (data.notes && Array.isArray(data.notes)) {
-                        data.notes.forEach(note => {
-                            const li = document.createElement('li');
-                            li.textContent = note;
-                            notesList.appendChild(li);
-                        });
-                    }
-                })
-                .catch(err => {
-                    console.error("Error:", err);
-                    document.getElementById('product-name').textContent = "Ապրանքը չգտնվեց";
+            document.getElementById('thumb-1').src = data.image;
+            document.getElementById('thumb-2').src = data.image;
+
+            const notesList = document.getElementById('product-notes');
+            notesList.innerHTML = "";
+            if (data.notes && Array.isArray(data.notes)) {
+                data.notes.forEach(note => {
+                    const li = document.createElement('li');
+                    li.textContent = note;
+                    notesList.appendChild(li);
                 });
+            }
+        } else {
+            document.getElementById('product-brand').textContent = "Ապրանքը չգտնվեց";
+            document.getElementById('product-name').textContent = "";
         }
     });
 </script>
 
-
 </body>
 </html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Product Details</title>-->
+<!--    <style>-->
+<!--        body { font-family: 'Arial', sans-serif; }-->
+<!--        .product-page-wrapper {-->
+<!--            display: flex;-->
+<!--            gap: 60px;-->
+<!--            padding: 50px;-->
+<!--            max-width: 1000px;-->
+<!--            margin: 50px auto;-->
+<!--            background: #fff;-->
+<!--            border-radius: 8px;-->
+<!--            align-items: flex-start;-->
+<!--        }-->
+<!--        .product-image-section img {-->
+<!--            width: 100%;-->
+<!--            max-width: 350px;-->
+<!--            border: 1px solid #ddd;-->
+<!--        }-->
+<!--        .product-info-section h1 { font-size: 32px; margin: 0 0 10px 0; color: #333; }-->
+<!--        .price-box { font-size: 22px; color: #b12704; margin: 20px 0; font-weight: bold; }-->
+<!--        .fragrance-notes h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }-->
+<!--        .fragrance-notes ul { list-style: none; padding: 0; }-->
+<!--        .fragrance-notes li { margin-bottom: 8px; color: #555; }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="product-page-wrapper">-->
+<!--    <div class="product-image-section">-->
+<!--        <img id="product-image" src="" alt="Product Image">-->
+<!--    </div>-->
+
+<!--    <div class="product-info-section">-->
+<!--        <h1 id="product-name">Loading...</h1>-->
+<!--        <div class="price-box">PRICE: <span id="product-price"></span> ֏</div>-->
+<!--        <p><strong>GENDER:</strong> <span id="product-gender"></span></p>-->
+
+<!--        <div class="fragrance-notes">-->
+<!--            <h3>FRAGRANCE NOTES:</h3>-->
+<!--            <ul id="product-notes"></ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    document.addEventListener("DOMContentLoaded", () => {-->
+<!--        const params = new URLSearchParams(window.location.search);-->
+<!--        const productName = params.get('name');-->
+
+<!--        if (productName) {-->
+<!--            // Հիմնական fetch-ը-->
+<!--            fetch(`․․/api/get-perfume-details?name=${encodeURIComponent(productName)}`)-->
+<!--                .then(response => {-->
+<!--                    if (!response.ok) throw new Error("Product not found");-->
+<!--                    return response.json();-->
+<!--                })-->
+<!--                .then(data => {-->
+<!--                    // 1. Անունը թարմացնել-->
+<!--                    document.getElementById('product-name').textContent = data.name;-->
+
+<!--                    // 2. Գինը և սեռը-->
+<!--                    document.getElementById('product-price').textContent = data.price;-->
+<!--                    document.getElementById('product-gender').textContent = data.gender;-->
+
+<!--                    // 3. Նկարը (data.image-ը արդեն ունի / սկզբում, ուստի ուղղակի վերագրում ենք)-->
+<!--                    const imgElement = document.getElementById('product-image');-->
+<!--                    imgElement.src = data.image;-->
+<!--                    imgElement.alt = data.name;-->
+
+<!--                    // 4. Նշումները (Notes)-->
+<!--                    const notesList = document.getElementById('product-notes');-->
+<!--                    notesList.innerHTML = ""; // Մաքրում ենք "Loading..."-ը-->
+<!--                    if (data.notes && Array.isArray(data.notes)) {-->
+<!--                        data.notes.forEach(note => {-->
+<!--                            const li = document.createElement('li');-->
+<!--                            li.textContent = note;-->
+<!--                            notesList.appendChild(li);-->
+<!--                        });-->
+<!--                    }-->
+<!--                })-->
+<!--                .catch(err => {-->
+<!--                    console.error("Error:", err);-->
+<!--                    document.getElementById('product-name').textContent = "Ապրանքը չգտնվեց";-->
+<!--                });-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+
+<!--</body>-->
+<!--</html>-->

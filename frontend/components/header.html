@@ -5,10 +5,16 @@
 <header class="header">
     <div class="header-top">
         <div class="container top-container">
-            <div class="search-box">
+            <div class="search-box" style="position: relative;">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Search...">
+                <input type="text" id="searchInput" placeholder="Search...">
+
+                <!-- Որոնման արդյունքների դուրս եկող պատուհանը -->
+                <div id="searchResultsDropdown" class="search-results-dropdown" style="display: none;">
+                    <!-- Այստեղ JavaScript-ը կլցնի որոնման արդյունքները -->
+                </div>
             </div>
+
             <div class="logo">
                 <a href="/index.html">HERMITAGE</a>
             </div>
@@ -81,3 +87,88 @@
         <!-- Այստեղ JavaScript-ի միջոցով ավտոմատ կավելանան ապրանքները -->
     </div>
 </div>
+
+
+<!--<link rel="stylesheet" href="/assets/css/style.css">-->
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>-->
+
+<!--<header class="header">-->
+<!--    <div class="header-top">-->
+<!--        <div class="container top-container">-->
+<!--            <div class="search-box">-->
+<!--                <i class="fa-solid fa-magnifying-glass"></i>-->
+<!--                <input type="text" placeholder="Search...">-->
+<!--            </div>-->
+<!--            <div class="logo">-->
+<!--                <a href="/index.html">HERMITAGE</a>-->
+<!--            </div>-->
+
+<!--            <div class="header-right-tools">-->
+<!--                <a href="#" class="tool-link">-->
+<!--                    <i class="fa-regular fa-user"></i> Login-->
+<!--                </a>-->
+<!--                <a href="javascript:void(0)" class="tool-link cart-link">-->
+<!--                    <i class="fa-solid fa-bag-shopping"></i> <span class="cart-count">0</span>-->
+<!--                </a>-->
+
+<!--                <div class="lang-dropdown">-->
+<!--                    <button class="lang-btn" id="currentLang">-->
+<!--                        Eng <i class="fa-solid fa-caret-down"></i>-->
+<!--                    </button>-->
+<!--                    <div class="lang-menu" id="langMenu">-->
+<!--                        <a href="#" data-lang="eng" class="lang-item active">Eng</a>-->
+<!--                        <a href="#" data-lang="arm" class="lang-item">Հայ</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <nav class="main-nav">-->
+<!--        <div class="container nav-container">-->
+<!--            <div class="nav-brand-icon">-->
+<!--                <span class="h-box">H</span>-->
+<!--            </div>-->
+<!--            <ul class="nav-links">-->
+<!--                <li class="dropdown">-->
+<!--                    <a href="#" class="shop-link">SHOP</a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a href="/pages/perfume.html">PERFUME</a></li>-->
+
+<!--                        <li class="dropdown-submenu">-->
+<!--                            <a href="javascript:void(0)" class="shop-link">MAKEUP <i class="fa-solid fa-chevron-right"></i></a>-->
+<!--                            <ul class="dropdown-menu-inner">-->
+<!--                                <li><a href="/pages/makeup/face.html">FACE</a></li>-->
+<!--                                <li><a href="/pages/makeup-lips.html">LIPS</a></li>-->
+<!--                                <li><a href="/pages/makeup-eyes.html">EYES</a></li>-->
+<!--                                <li><a href="/pages/makeup-accessories.html">ACCESSORIES</a></li>-->
+<!--                                <li><a href="/pages/makeup-nails.html">NAILS</a></li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+
+<!--                        <li><a href="/pages/care.html">CARE</a></li>-->
+<!--                        <li><a href="/pages/gift-sets.html">GIFT SETS</a></li>-->
+<!--                        <li><a href="/pages/home-other.html">HOME & OTHER</a></li>-->
+<!--                        <li><a href="/pages/for-kids.html">FOR KIDS</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+
+<!--                <li><a href="/pages/brands.html">BRANDS</a></li>-->
+<!--                <li><a href="/pages/gift-card.html">GIFT CARD</a></li>-->
+<!--                <li><a href="/pages/contact.html">CONTACTS</a></li>-->
+<!--                <li><a href="/pages/blog.html">BLOG</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
+
+<!--&lt;!&ndash; Cart Modal (Զամբյուղի պատուհան) &ndash;&gt;-->
+<!--<div class="cart-modal" style="display:none; position:fixed; right:0; top:0; width:400px; height:100%; background:white; z-index:9999; box-shadow:-2px 0 10px rgba(0,0,0,0.1); padding:20px; overflow-y:auto;">-->
+<!--    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">-->
+<!--        <h2 style="margin:0;">YOUR CART</h2>-->
+<!--        <button class="close-modal-btn" onclick="document.querySelector('.cart-modal').style.display='none'" style="border:none; background:none; cursor:pointer; font-size:24px;">X</button>-->
+<!--    </div>-->
+<!--    <div class="cart-items-list">-->
+<!--        &lt;!&ndash; Այստեղ JavaScript-ի միջոցով ավտոմատ կավելանան ապրանքները &ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->

@@ -1,3 +1,375 @@
+/*!* ================= TWIN HEADER (HERMITAGE STYLE) ================= *!*/
+/*.header {*/
+/*    width: 100%;*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*    z-index: 1000;*/
+/*    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);*/
+/*}*/
+/*.top-container {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    position: relative; !* Կարևոր է երեխա էլեմենտների դիրքավորման համար *!*/
+/*    padding: 10px 0;*/
+/*}*/
+
+/*.search-box {*/
+/*    width: 280px;*/
+/*    flex-shrink: 0; !* Չի թողնում սեղմվել *!*/
+/*    margin-right: auto; !* Հրում է լոգոն և աջ գործիքները դեպի աջ *!*/
+/*}*/
+
+/*.logo {*/
+/*    position: absolute; !* Դուրս է հանում հոսքից և դնում կենտրոնում *!*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*    pointer-events: none; !* Որպեսզի լոգոն չխանգարի մկնիկի սեղմումներին *!*/
+/*}*/
+
+/*.header-right-tools {*/
+/*    margin-left: auto; !* Հրում է աջ գործիքները դեպի աջ *!*/
+/*    display: flex;*/
+/*    gap: 25px;*/
+/*}*/
+/*!* --- Top Header --- *!*/
+/*.header-top {*/
+/*    background-color: var(--hermitage-dark);*/
+/*    padding: 18px 0;*/
+/*    border-bottom: 1px solid var(--border-color);*/
+/*}*/
+
+/*.top-container {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    !*նոր*!*/
+/*    width: 100%;*/
+/*}*/
+/*!* Ավելացրու սրանք, որպեսզի բլոկները չխանգարեն իրար *!*/
+/*.search-box, .logo, .header-right-tools {*/
+/*    flex: 1; !* Յուրաքանչյուրը զբաղեցնում է ընդհանուրի 1/3-ը *!*/
+/*}*/
+
+/*.logo {*/
+/*    text-align: center; !* Լոգոն կմնա մեջտեղում *!*/
+/*}*/
+
+/*.header-right-tools {*/
+/*    justify-content: flex-end; !* Աջ կողմի գործիքները կգնան ամենաաջ *!*/
+/*}*/
+/*!* Որոնման Դաշտ *!*/
+/*.search-box {*/
+/*    flex: 0 0 280px;   !* Սա երաշխավորում է, որ չի աճի և չի սեղմվի *!*/
+/*    margin: 0;*/
+/*    position: relative;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    background: rgba(255, 255, 255, 0.08);*/
+/*    border-radius: 20px;*/
+/*    padding: 8px 18px;*/
+/*    width: 280px;*/
+/*    transition: var(--transition);*/
+/*}*/
+
+/*.search-box:focus-within {*/
+/*    background: rgba(255, 255, 255, 0.15);*/
+/*}*/
+
+/*.search-box i {*/
+/*    color: rgba(255, 255, 255, 0.5);*/
+/*    font-size: 14px;*/
+/*    margin-right: 12px;*/
+/*}*/
+
+/*.search-box input {*/
+/*    background: none;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    color: var(--text-light);*/
+/*    font-size: 13px;*/
+/*    width: 100%;*/
+/*    font-family: var(--font-sans);*/
+/*}*/
+
+/*.search-box input::placeholder {*/
+/*    color: rgba(255, 255, 255, 0.4);*/
+/*}*/
+
+/*!* Կենտրոնական Լոգո *!*/
+/*.logo {*/
+/*    font-family: var(--font-serif);*/
+/*    font-size: 34px;*/
+/*    letter-spacing: 5px;*/
+/*    font-weight: 400;*/
+/*    color: var(--text-light);*/
+/*    text-align: center;*/
+/*}*/
+
+/*!* Աջակողմյան գործիքներ *!*/
+/*.header-right-tools {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: 25px;*/
+/*    font-size: 14px;*/
+/*}*/
+
+/*.tool-link {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: 8px;*/
+/*    color: var(--text-light);*/
+/*    font-weight: 400;*/
+/*    transition: var(--transition);*/
+/*}*/
+
+/*.tool-link:hover {*/
+/*    color: var(--primary-color);*/
+/*}*/
+
+/*.cart-link span {*/
+/*    background: rgba(255, 255, 255, 0.15);*/
+/*    padding: 2px 9px;*/
+/*    border-radius: 12px;*/
+/*    font-size: 11px;*/
+/*    font-weight: 600;*/
+/*}*/
+
+/*.language-dropdown {*/
+/*    cursor: pointer;*/
+/*    color: var(--text-light);*/
+/*    font-weight: 400;*/
+/*    transition: var(--transition);*/
+/*}*/
+
+/*.language-dropdown:hover {*/
+/*    color: var(--primary-color);*/
+/*}*/
+
+/*.language-dropdown i {*/
+/*    font-size: 11px;*/
+/*    margin-left: 3px;*/
+/*}*/
+
+/*!* --- Main Navigation (Երկրորդ հարկ) --- *!*/
+/*.main-nav {*/
+/*    background-color: var(--hermitage-nav-bg);*/
+/*    padding: 14px 0;*/
+/*}*/
+
+/*.nav-container {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    position: relative;*/
+/*}*/
+
+/*!* Ձախակողմյան "H" լոգոն *!*/
+/*.nav-brand-icon {*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.h-box {*/
+/*    background: var(--text-light);*/
+/*    color: var(--hermitage-dark);*/
+/*    font-weight: 700;*/
+/*    padding: 5px 11px;*/
+/*    font-family: var(--font-serif);*/
+/*    font-size: 18px;*/
+/*    border-radius: 2px;*/
+/*    box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
+/*}*/
+
+/*!* Մենյուի հղումները *!*/
+/*.nav-links {*/
+/*    display: flex;*/
+/*    gap: 45px;*/
+/*}*/
+
+/*.nav-links a {*/
+/*    font-size: 14px;*/
+/*    font-weight: 500;*/
+/*    letter-spacing: 2px;*/
+/*    color: var(--text-light);*/
+/*    transition: var(--transition);*/
+/*    text-transform: uppercase;*/
+/*}*/
+
+/*.nav-links a:hover {*/
+/*    color: var(--primary-color);*/
+/*}*/
+
+/*!* Հիմնական տեսանելիությունը *!*/
+/*!* --- Dropdown-ի ճշգրտված ոճերը --- *!*/
+/*!* Դրոփդաունի պահողը *!*/
+/*.dropdown {*/
+/*    position: relative;*/
+/*}*/
+
+/*!* Թաքցնում ենք մենյուն *!*/
+/*.dropdown-menu {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*    left: 0;*/
+/*    background-color: #3d1b21; !* Քո գույնը *!*/
+/*    min-width: 200px;*/
+/*    z-index: 9999;*/
+/*    list-style: none;*/
+/*    padding: 10px 0;*/
+/*    margin: 0;*/
+/*    box-shadow: 0 10px 20px rgba(0,0,0,0.3);*/
+/*}*/
+
+/*!* Մկնիկը պահելիս ցույց ենք տալիս *!*/
+/*.dropdown:hover .dropdown-menu {*/
+/*    display: block !important;*/
+/*}*/
+
+/*!* Տողերի ոճավորում *!*/
+/*.dropdown-menu li a {*/
+/*    display: block;*/
+/*    padding: 10px 20px;*/
+/*    color: #fff;*/
+/*    text-transform: uppercase;*/
+/*    font-size: 13px;*/
+/*    text-decoration: none;*/
+/*    transition: 0.3s;*/
+/*}*/
+
+/*.dropdown-menu li a:hover {*/
+/*    background-color: #5a2830;*/
+/*}*/
+
+/*!* Հիմնական դրոփդաունի կարգավորում *!*/
+/*.dropdown-submenu {*/
+/*    position: relative;*/
+/*}*/
+
+/*!* Թաքցնում ենք MAKEUP-ի ենթացանկը *!*/
+/*.dropdown-menu-inner {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    left: 100%; !* Բացվում է աջ կողմից *!*/
+/*    top: 0;*/
+/*    background-color: #3d1b21;*/
+/*    min-width: 200px;*/
+/*    list-style: none;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*}*/
+
+/*!* Մկնիկը պահելիս ցույց ենք տալիս *!*/
+/*.dropdown-submenu:hover .dropdown-menu-inner {*/
+/*    display: block;*/
+/*}*/
+
+/*!* Ոճավորում *!*/
+/*.dropdown-menu-inner li a {*/
+/*    padding: 10px 20px;*/
+/*    display: block;*/
+/*    color: #fff;*/
+/*    text-decoration: none;*/
+/*    font-size: 13px;*/
+/*}*/
+/*!* Sidebar Search *!*/
+
+/*.sidebar-search {*/
+/*    width: 100%;*/
+/*    height: 48px;*/
+/*    background: rgba(255,255,255,0.08);*/
+/*    border-radius: 18px;*/
+/*    padding: 0 18px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    margin: 0;*/
+/*}*/
+
+/*.sidebar-search i {*/
+/*    color: rgba(255,255,255,.55);*/
+/*    margin-right: 12px;*/
+/*    font-size: 15px;*/
+/*}*/
+
+/*.sidebar-search input {*/
+/*    width: 100%;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    background: transparent;*/
+/*    color: #fff;*/
+/*    font-size: 14px;*/
+/*    font-family: var(--font-sans);*/
+/*}*/
+
+/*.sidebar-search input::placeholder {*/
+/*    color: rgba(255,255,255,.45);*/
+/*}*/
+
+/*.sidebar-search:focus-within {*/
+/*    background: rgba(255,255,255,.14);*/
+/*}*/
+
+/*.logo a {*/
+/*    color: #ffffff;*/
+/*    text-decoration: none;*/
+/*    font-family: var(--font-serif);*/
+/*    font-size: 42px;*/
+/*    font-weight: 500;*/
+/*    letter-spacing: 6px;*/
+/*}*/
+/*.logo {*/
+/*    position: absolute;*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*    z-index: 10;*/
+/*}*/
+
+/*.logo a {*/
+/*    color: #ffffff;*/
+/*    text-decoration: none;*/
+/*    font-family: "Cormorant Garamond", serif;*/
+/*    font-size: 42px;*/
+/*    font-weight: 500;*/
+/*    letter-spacing: 6px;*/
+/*    white-space: nowrap;*/
+/*}*/
+
+/*!* ================= SEARCH DROPDOWN ================= *!*/
+
+/*.search-results-dropdown {*/
+/*    position: absolute;*/
+/*    top: calc(100% + 8px);*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    background: #ffffff;*/
+/*    border-radius: 4px;*/
+/*    overflow: hidden;*/
+/*    z-index: 9999;*/
+/*    display: none;*/
+/*    box-shadow: 0 10px 25px rgba(0,0,0,.18);*/
+/*}*/
+
+/*.search-result-item {*/
+/*    padding: 14px 20px;*/
+/*    cursor: pointer;*/
+/*    font-size: 16px;*/
+/*    color: #333;*/
+/*    transition: .2s;*/
+/*    font-weight: 500;*/
+/*}*/
+
+/*.search-result-item:hover {*/
+/*    background: #f4f4f4;*/
+/*}*/
+
+/*.search-result-item.all-results {*/
+/*    color: #e53935;*/
+/*    font-weight: 700;*/
+/*    border-top: 1px solid #eee;*/
+/*}*/
+
 /* ================= TWIN HEADER (HERMITAGE STYLE) ================= */
 .header {
     width: 100%;
@@ -6,31 +378,7 @@
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
-.top-container {
-    display: flex;
-    align-items: center;
-    position: relative; /* Կարևոր է երեխա էլեմենտների դիրքավորման համար */
-    padding: 10px 0;
-}
 
-.search-box {
-    width: 280px;
-    flex-shrink: 0; /* Չի թողնում սեղմվել */
-    margin-right: auto; /* Հրում է լոգոն և աջ գործիքները դեպի աջ */
-}
-
-.logo {
-    position: absolute; /* Դուրս է հանում հոսքից և դնում կենտրոնում */
-    left: 50%;
-    transform: translateX(-50%);
-    pointer-events: none; /* Որպեսզի լոգոն չխանգարի մկնիկի սեղմումներին */
-}
-
-.header-right-tools {
-    margin-left: auto; /* Հրում է աջ գործիքները դեպի աջ */
-    display: flex;
-    gap: 25px;
-}
 /* --- Top Header --- */
 .header-top {
     background-color: var(--hermitage-dark);
@@ -42,24 +390,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*նոր*/
+    position: relative;
     width: 100%;
 }
-/* Ավելացրու սրանք, որպեսզի բլոկները չխանգարեն իրար */
+
+/* Բլոկների հավասարաչափ բաշխում */
 .search-box, .logo, .header-right-tools {
-    flex: 1; /* Յուրաքանչյուրը զբաղեցնում է ընդհանուրի 1/3-ը */
+    flex: 1;
 }
 
-.logo {
-    text-align: center; /* Լոգոն կմնա մեջտեղում */
-}
-
-.header-right-tools {
-    justify-content: flex-end; /* Աջ կողմի գործիքները կգնան ամենաաջ */
-}
 /* Որոնման Դաշտ */
 .search-box {
-    flex: 0 0 280px;   /* Սա երաշխավորում է, որ չի աճի և չի սեղմվի */
+    flex: 0 0 280px;
     margin: 0;
     position: relative;
     display: flex;
@@ -97,18 +439,28 @@
 
 /* Կենտրոնական Լոգո */
 .logo {
-    font-family: var(--font-serif);
-    font-size: 34px;
-    letter-spacing: 5px;
-    font-weight: 400;
-    color: var(--text-light);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
+    z-index: 10;
+}
+
+.logo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Cormorant Garamond", var(--font-serif);
+    font-size: 42px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    white-space: nowrap;
 }
 
 /* Աջակողմյան գործիքներ */
 .header-right-tools {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 25px;
     font-size: 14px;
 }
@@ -120,6 +472,7 @@
     color: var(--text-light);
     font-weight: 400;
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .tool-link:hover {
@@ -186,6 +539,9 @@
 .nav-links {
     display: flex;
     gap: 45px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
@@ -195,26 +551,24 @@
     color: var(--text-light);
     transition: var(--transition);
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
 }
-/*////////////////////*/
-/* Հիմնական տեսանելիությունը */
-/* --- Dropdown-ի ճշգրտված ոճերը --- */
-/* Դրոփդաունի պահողը */
+
+/* --- Dropdown-ի ոճերը --- */
 .dropdown {
     position: relative;
 }
 
-/* Թաքցնում ենք մենյուն */
 .dropdown-menu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #3d1b21; /* Քո գույնը */
+    background-color: #3d1b21;
     min-width: 200px;
     z-index: 9999;
     list-style: none;
@@ -223,12 +577,10 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-/* Մկնիկը պահելիս ցույց ենք տալիս */
 .dropdown:hover .dropdown-menu {
     display: block !important;
 }
 
-/* Տողերի ոճավորում */
 .dropdown-menu li a {
     display: block;
     padding: 10px 20px;
@@ -243,16 +595,14 @@
     background-color: #5a2830;
 }
 
-/* Հիմնական դրոփդաունի կարգավորում */
 .dropdown-submenu {
     position: relative;
 }
 
-/* Թաքցնում ենք MAKEUP-ի ենթացանկը */
 .dropdown-menu-inner {
     display: none;
     position: absolute;
-    left: 100%; /* Բացվում է աջ կողմից */
+    left: 100%;
     top: 0;
     background-color: #3d1b21;
     min-width: 200px;
@@ -261,12 +611,10 @@
     margin: 0;
 }
 
-/* Մկնիկը պահելիս ցույց ենք տալիս */
 .dropdown-submenu:hover .dropdown-menu-inner {
     display: block;
 }
 
-/* Ոճավորում */
 .dropdown-menu-inner li a {
     padding: 10px 20px;
     display: block;
@@ -274,8 +622,8 @@
     text-decoration: none;
     font-size: 13px;
 }
-/* Sidebar Search */
 
+/* Sidebar Search (Եթե կիրառվում է մոբայլ կամ կողային մենյուում) */
 .sidebar-search {
     width: 100%;
     height: 48px;
@@ -311,33 +659,7 @@
     background: rgba(255,255,255,.14);
 }
 
-.logo a {
-    color: #ffffff;
-    text-decoration: none;
-    font-family: var(--font-serif);
-    font-size: 42px;
-    font-weight: 500;
-    letter-spacing: 6px;
-}
-.logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-}
-
-.logo a {
-    color: #ffffff;
-    text-decoration: none;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 42px;
-    font-weight: 500;
-    letter-spacing: 6px;
-    white-space: nowrap;
-}
-
 /* ================= SEARCH DROPDOWN ================= */
-
 .search-results-dropdown {
     position: absolute;
     top: calc(100% + 8px);
@@ -358,6 +680,8 @@
     color: #333;
     transition: .2s;
     font-weight: 500;
+    text-decoration: none;
+    display: block;
 }
 
 .search-result-item:hover {
