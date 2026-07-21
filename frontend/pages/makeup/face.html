@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hermitage | Face Makeup</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/pages/perfume-standalone.css">
+    <link rel="stylesheet" href="../../assets/css/pages/face.css">
+    <link rel="stylesheet" href="../../assets/css/makeup-standalone.css">
+
+    <style>
+        /* Ուղղակիորեն էջում գրված ոճերը 100% կգերազանցեն բոլոր արտաքին ֆայլերին */
+        .product-item {
+            position: relative !important;
+        }
+        .wishlist-btn {
+            position: absolute !important;
+            top: 15px !important;
+            right: 15px !important;
+            width: 42px !important;
+            height: 42px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: #fff !important;
+            border: none !important;
+            border-radius: 50% !important;
+            font-size: 20px !important;
+            color: #777 !important;
+            cursor: pointer !important;
+            z-index: 9999 !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,.15) !important;
+        }
+        .wishlist-btn:hover {
+            color: #e60023 !important;
+            transform: scale(1.15) !important;
+        }
+        .wishlist-btn.active {
+            color: #e60023 !important;
+            background: #fff0f2 !important;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<div id="header-component"></div>
+
+
+
+<div class="catalog-container">
+
+
+
+    <aside class="sidebar">
+
+
+        <div class="filter-box">
+
+            <h4>Category</h4>
+
+
+            <label>
+                <input type="checkbox" class="filter-input" value="face">
+                Face
+            </label>
+
+            <br>
+
+
+            <label>
+                <input type="checkbox" class="filter-input" value="foundation">
+                Foundation
+            </label>
+
+
+            <br>
+
+
+            <label>
+                <input type="checkbox" class="filter-input" value="powder">
+                Powder
+            </label>
+
+
+        </div>
+
+
+
+
+
+        <div class="filter-box">
+
+
+            <h4>Price</h4>
+
+
+            <div class="price-inputs">
+
+                <input type="number" id="minPrice" value="0">
+
+                <input type="number" id="maxPrice" value="100000">
+
+            </div>
+
+
+            <input
+                    type="range"
+                    id="priceRange"
+                    min="0"
+                    max="100000"
+                    value="100000">
+
+
+        </div>
+
+
+
+
+
+        <div class="filter-box">
+
+
+            <h4>Status</h4>
+
+
+            <label>
+                <input type="radio" name="filter">
+                All
+            </label>
+
+            <br>
+
+
+            <label>
+                <input type="radio" name="filter">
+                Sale
+            </label>
+
+
+            <br>
+
+
+            <label>
+                <input type="radio" name="filter">
+                Bestsellers
+            </label>
+
+
+            <br>
+
+
+            <label>
+                <input type="radio" name="filter">
+                New Arrivals
+            </label>
+
+
+
+        </div>
+
+
+
+        <button class="reset-btn">
+            RESET
+        </button>
+
+
+
+    </aside>
+
+
+
+
+
+
+    <main class="products-grid">
+
+
+        <h1 class="page-title">
+            FACE MAKEUP
+        </h1>
+
+
+
+
+
+        <!-- FOUNDATION -->
+
+
+        <div class="product-item"
+             data-category="foundation"
+             data-price="18000"
+             data-type="new">
+
+
+            <button class="wishlist-btn">
+                ♡
+            </button>
+            <img src="../../assets/images/makeup/face/foundation1.png"
+                 alt="Foundation">
+            <h3>
+                ADVANCED FOUNDATION
+            </h3>
+            <p>
+                FOUNDATION
+            </p>
+            <span class="price">
+18000 ֏
+</span>
+            <button class="buy-btn">
+                ADD TO CART
+            </button>
+        </div>
+        <!-- POWDER -->
+
+        <div class="product-item"
+             data-category="powder"
+             data-price="15000"
+             data-type="bestseller">
+            <button class="wishlist-btn">
+                ♡
+            </button>
+
+
+            <img src="../../assets/images/makeup/face/powder1.png"
+                 alt="Powder">
+
+
+            <h3>
+                SHISEIDO POWDER
+            </h3>
+
+
+            <p>
+                FACE POWDER
+            </p>
+
+
+            <span class="price">
+15000 ֏
+</span>
+
+
+            <button class="buy-btn">
+                ADD TO CART
+            </button>
+
+
+        </div>
+
+
+
+
+
+
+
+        <!-- FACE -->
+
+
+        <div class="product-item"
+             data-category="face"
+             data-price="13250"
+             data-type="sale">
+
+
+            <button class="wishlist-btn">
+                ♡
+            </button>
+
+
+            <img src="../../assets/images/makeup/face/face1.png"
+                 alt="Face Makeup">
+
+
+            <h3>
+                SULTANE BEAUTY
+            </h3>
+
+
+            <p>
+                FACE COLLECTION
+            </p>
+
+
+            <span class="price">
+13250 ֏
+</span>
+
+
+            <button class="buy-btn">
+                ADD TO CART
+            </button>
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="product-item"
+             data-category="foundation"
+             data-price="22000"
+             data-type="bestseller">
+
+
+            <button class="wishlist-btn">
+                ♡
+            </button>
+
+
+            <img src="../../assets/images/makeup/face/foundation2.png"
+                 alt="Foundation">
+
+
+            <h3>
+                LUXURY FOUNDATION
+            </h3>
+
+
+            <p>
+                PREMIUM FOUNDATION
+            </p>
+
+
+            <span class="price">
+22000 ֏
+</span>
+
+
+            <button class="buy-btn">
+                ADD TO CART
+            </button>
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="product-item"
+             data-category="powder"
+             data-price="17000"
+             data-type="new">
+
+
+            <button class="wishlist-btn">
+                ♡
+            </button>
+
+
+            <img src="../../assets/images/makeup/face/powder2.png"
+                 alt="Powder">
+
+
+            <h3>
+                PRO POWDER
+            </h3>
+
+
+            <p>
+                MATTE POWDER
+            </p>
+
+
+            <span class="price">
+17000 ֏
+</span>
+
+
+            <button class="buy-btn">
+                ADD TO CART
+            </button>
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="product-item"
+             data-category="face"
+             data-price="25000"
+             data-type="new">
+
+
+            <button class="wishlist-btn">
+                ♡
+            </button>
+
+
+            <img src="../../assets/images/makeup/face/face2.png"
+                 alt="Face">
+
+
+            <h3>
+                PREMIUM FACE
+            </h3>
+
+
+            <p>
+                FACE MAKEUP
+            </p>
+
+
+            <span class="price">
+25000 ֏
+</span>
+
+
+            <button class="buy-btn">
+                ADD TO CART
+            </button>
+
+
+        </div>
+
+
+
+
+    </main>
+
+
+
+</div>
+
+
+
+
+
+
+<div id="footer-component"></div>
+
+<div id="auth-modal-component"></div>
+
+
+
+
+<script src="../../assets/js/app.js"></script>
+
+
+</body>
+
+</html>

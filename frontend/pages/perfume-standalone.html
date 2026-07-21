@@ -1,0 +1,16 @@
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const productName = params.get('name');
+
+        if (productName) {
+            console.log("Ցույց տալ ապրանքը՝", productName);
+
+            // Այստեղ թարմացնում ենք էջի վերնագիրը
+            const titleElement = document.querySelector('.page-title');
+            if (titleElement) {
+                titleElement.textContent = productName;
+            }
+        }
+    });
+</script>

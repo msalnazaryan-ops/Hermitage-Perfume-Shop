@@ -1,0 +1,684 @@
+/* =========================
+        FACE PAGE STYLES
+========================= */
+
+
+/* Հիմնական կառուցվածք */
+
+body {
+    background: #fff;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.catalog-container {
+
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+
+}
+
+
+.products-grid {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+}
+
+
+
+/* =========================
+        PRODUCT CARD
+========================= */
+
+
+.product-item {
+
+    position: relative !important;
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    border: 1px solid #e5e5e5;
+
+    transition: .3s;
+
+    overflow: hidden;
+
+    text-align: center;
+
+}
+
+
+.product-item:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+
+
+.product-item img {
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:contain;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.product-item h3 {
+
+    margin:10px 0;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+}
+
+
+
+.price {
+
+    display:block;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    margin:10px 0;
+
+}
+
+
+
+/* =========================
+        HEART BUTTON
+========================= */
+
+
+button.wishlist-btn {
+
+
+    position:absolute !important;
+
+
+    top:15px !important;
+
+    right:15px !important;
+
+
+
+    width:42px !important;
+
+    height:42px !important;
+
+
+
+    min-width:42px !important;
+
+    max-width:42px !important;
+
+
+
+    min-height:42px !important;
+
+    max-height:42px !important;
+
+
+
+    padding:0 !important;
+
+    margin:0 !important;
+
+
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+
+
+    background:#ffffff !important;
+
+
+
+    border:none !important;
+
+
+
+    border-radius:50% !important;
+
+
+
+    font-size:28px !important;
+
+    line-height:42px !important;
+
+
+
+    color:#777 !important;
+
+
+
+    cursor:pointer !important;
+
+
+
+    z-index:99999 !important;
+
+
+
+    box-shadow:
+            0 5px 15px rgba(0,0,0,.15) !important;
+
+
+
+    transition:.3s !important;
+
+
+}
+
+
+
+button.wishlist-btn:hover {
+
+
+    transform:scale(1.15);
+
+
+    color:#e60023 !important;
+
+
+}
+
+
+
+button.wishlist-btn.active {
+
+
+    color:#e60023 !important;
+
+
+    background:#fff0f2 !important;
+
+
+}
+
+
+
+
+/* =========================
+        BUY BUTTON
+========================= */
+
+
+.buy-btn {
+
+    width:100%;
+
+    padding:12px;
+
+    background:#000;
+
+    color:white;
+
+    border:none;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    text-transform:uppercase;
+
+}
+
+
+
+.buy-btn:hover {
+
+    background:#333;
+
+}
+
+
+
+/* =========================
+        RESPONSIVE
+========================= */
+
+
+@media(max-width:992px){
+
+    .products-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+@media(max-width:576px){
+
+    .products-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+
+
+/*!* =========================*/
+/*   FACE PAGE*/
+/*========================= *!*/
+
+/*body {*/
+/*    background: #fff;*/
+/*    color: #333;*/
+/*    font-family: 'Montserrat', sans-serif;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.catalog-container {*/
+/*    max-width: 1200px;*/
+/*    margin: 40px auto;*/
+/*    padding: 0 20px;*/
+/*}*/
+
+/*.products-grid {*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(3, 1fr);*/
+/*    gap: 30px;*/
+/*}*/
+
+/*.page-title {*/
+/*    grid-column: 1 / -1;*/
+/*    font-size: 28px;*/
+/*    font-weight: 600;*/
+/*    color: #210207;*/
+/*    margin-bottom: 20px;*/
+/*    text-transform: uppercase;*/
+/*}*/
+
+/*.product-item {*/
+/*    background: #fff;*/
+/*    border: 1px solid #e5e5e5;*/
+/*    padding: 20px;*/
+/*    text-align: center;*/
+/*    transition: all .3s ease;*/
+/*}*/
+
+/*.product-item:hover {*/
+/*    transform: translateY(-5px);*/
+/*    box-shadow: 0 10px 25px rgba(0,0,0,.08);*/
+/*}*/
+
+/*.product-item img {*/
+/*    width: 100%;*/
+/*    height: 250px;*/
+/*    object-fit: contain;*/
+/*    margin-bottom: 15px;*/
+/*}*/
+
+/*.product-item h3 {*/
+/*    margin: 0;*/
+/*    font-size: 15px;*/
+/*    font-weight: 700;*/
+/*    color: #222;*/
+/*    text-transform: uppercase;*/
+/*}*/
+
+/*.product-item p {*/
+/*    margin: 8px 0;*/
+/*    color: #777;*/
+/*    font-size: 13px;*/
+/*}*/
+
+/*.price {*/
+/*    display: block;*/
+/*    font-size: 18px;*/
+/*    font-weight: bold;*/
+/*    color: #210207;*/
+/*    margin: 15px 0;*/
+/*}*/
+
+/*.buy-btn {*/
+/*    width: 100%;*/
+/*    height: 45px;*/
+/*    border: none;*/
+/*    background: #330c13;*/
+/*    color: #fff;*/
+/*    cursor: pointer;*/
+/*    font-size: 13px;*/
+/*    font-weight: 600;*/
+/*    text-transform: uppercase;*/
+/*    transition: .3s;*/
+/*}*/
+
+/*.buy-btn:hover {*/
+/*    background: #4b111c;*/
+/*}*/
+
+/*!*.product-item {*!*/
+/*!*    opacity: 0;*!*/
+/*!*    animation: fadeIn .8s forwards;*!*/
+/*!*}*!*/
+
+/*@keyframes fadeIn {*/
+/*    to {*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
+
+/*!* =========================*/
+/*   Responsive*/
+/*========================= *!*/
+
+/*@media (max-width: 992px) {*/
+/*    .products-grid {*/
+/*        grid-template-columns: repeat(2, 1fr);*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 576px) {*/
+/*    .products-grid {*/
+/*        grid-template-columns: 1fr;*/
+/*    }*/
+
+/*    .page-title {*/
+/*        text-align: center;*/
+/*    }*/
+
+/*    .product-item img {*/
+/*        height: 220px;*/
+/*    }*/
+/*}*/
+
+/*.product-item{*/
+/*    position:relative;*/
+/*    background:white;*/
+/*    padding:25px;*/
+/*    border-radius:20px;*/
+/*    transition:.3s;*/
+/*    overflow:hidden;*/
+/*}*/
+
+
+/*.product-item:hover{*/
+
+/*    transform:translateY(-8px);*/
+
+/*    box-shadow:0 15px 35px rgba(0,0,0,.15);*/
+
+/*}*/
+
+
+
+/*.product-item img{*/
+
+/*    width:100%;*/
+/*    height:260px;*/
+/*    object-fit:contain;*/
+
+/*}*/
+
+
+
+/*!*.wishlist-btn{*!*/
+
+/*!*    position:absolute;*!*/
+/*!*    right:20px;*!*/
+/*!*    top:20px;*!*/
+
+/*!*    width:40px;*!*/
+/*!*    height:40px;*!*/
+
+/*!*    border-radius:50%;*!*/
+/*!*    border:none;*!*/
+
+/*!*    background:white;*!*/
+
+/*!*    font-size:25px;*!*/
+
+/*!*    cursor:pointer;*!*/
+
+/*!*    box-shadow:0 5px 15px rgba(0,0,0,.15);*!*/
+
+/*!*}*!*/
+
+
+
+/*.wishlist-btn.active{*/
+
+/*    color:red;*/
+
+/*}*/
+
+
+
+/*.buy-btn{*/
+
+/*    width:100%;*/
+/*    margin-top:15px;*/
+
+/*    padding:12px;*/
+
+/*    background:#000;*/
+
+/*    color:white;*/
+
+/*    border:none;*/
+
+/*    border-radius:20px;*/
+
+/*    cursor:pointer;*/
+
+/*}*/
+
+
+/*.buy-btn:hover{*/
+
+/*    background:#333;*/
+
+/*}*/
+
+/*!*.product-item{*!*/
+/*!*    position:relative;*!*/
+/*!*}*!*/
+
+/*!* Ավելացրու .products-grid որպես նախածանց, որպեսզի ավելի հստակ լինի *!*/
+/*.products-grid .product-item .wishlist-btn {*/
+/*    position: absolute;*/
+/*    top: 15px;*/
+/*    right: 15px;*/
+/*    width: 40px !important;  !* Փորձիր սա, եթե չի օգնում առանց important-ի *!*/
+/*    height: 40px !important;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    background: white;*/
+/*    border: none;*/
+/*    border-radius: 50%;*/
+/*    font-size: 24px;*/
+/*    cursor: pointer;*/
+/*    box-shadow: 0 5px 15px rgba(0,0,0,0.15);*/
+/*    z-index: 10;*/
+/*}*/
+/*.wishlist-btn{*/
+
+/*    position:absolute;*/
+/*    top:15px;*/
+/*    right:15px;*/
+
+/*    width:40px;*/
+/*    height:40px;*/
+
+/*    border-radius:50%;*/
+
+/*    border:none;*/
+
+/*    background:white;*/
+
+/*    font-size:25px;*/
+
+/*    cursor:pointer;*/
+
+/*    box-shadow:0 5px 15px rgba(0,0,0,.15);*/
+
+/*}*/
+
+
+/*.wishlist-btn.active{*/
+
+/*    color:red;*/
+
+/*}*/
+/*!* ===============================*/
+/*   WISHLIST HEART BUTTON*/
+/*================================ *!*/
+
+/*.product-item {*/
+/*    position: relative;*/
+/*}*/
+
+
+/*.wishlist-btn {*/
+
+/*    position: absolute;*/
+
+/*    top: 15px;*/
+/*    right: 15px;*/
+
+/*    width: 38px;*/
+/*    height: 38px;*/
+
+/*    border-radius: 50%;*/
+
+/*    border: none;*/
+
+/*    background: white;*/
+
+/*    font-size: 25px;*/
+
+/*    color: #777;*/
+
+/*    cursor: pointer;*/
+
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+
+/*    box-shadow: 0 5px 15px rgba(0,0,0,0.15);*/
+
+/*    transition: all .3s ease;*/
+
+/*    z-index: 5;*/
+/*}*/
+
+
+
+/*.wishlist-btn:hover {*/
+
+/*    transform: scale(1.15);*/
+
+/*    color:#d60000;*/
+
+/*}*/
+
+
+
+/*.wishlist-btn.active {*/
+
+/*    color:#e60023;*/
+
+/*    background:#fff0f2;*/
+
+/*    transform:scale(1.1);*/
+
+/*}*/
+/*!* HEART FIX *!*/
+
+/*.product-item {*/
+/*    position: relative !important;*/
+/*}*/
+
+
+/*.wishlist-btn {*/
+
+/*    position: absolute;*/
+
+/*    top: 15px;*/
+/*    right: 15px;*/
+
+/*    width: 42px;*/
+/*    height: 42px;*/
+
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+
+/*    background: #fff;*/
+
+/*    border: none;*/
+
+/*    border-radius: 50%;*/
+
+/*    font-size: 28px;*/
+
+/*    line-height: 1;*/
+
+/*    color: #777;*/
+
+/*    cursor: pointer;*/
+
+/*    transition: .3s;*/
+
+/*    z-index: 10;*/
+
+/*    box-shadow: 0 5px 15px rgba(0,0,0,.15);*/
+/*}*/
+
+
+/*.wishlist-btn:hover {*/
+
+/*    transform: scale(1.15);*/
+
+/*    color:#e60023;*/
+
+/*}*/
+
+
+/*.wishlist-btn.active {*/
+
+/*    color:#e60023;*/
+
+/*    background:#fff0f2;*/
+
+/*}*/

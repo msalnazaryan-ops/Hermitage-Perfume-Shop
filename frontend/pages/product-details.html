@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; }
+        .product-page-wrapper {
+            display: flex;
+            gap: 60px;
+            padding: 50px;
+            max-width: 1000px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 8px;
+            align-items: flex-start;
+        }
+        .product-image-section img {
+            width: 100%;
+            max-width: 350px;
+            border: 1px solid #ddd;
+        }
+        .product-info-section h1 { font-size: 32px; margin: 0 0 10px 0; color: #333; }
+        .price-box { font-size: 22px; color: #b12704; margin: 20px 0; font-weight: bold; }
+        .fragrance-notes h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+        .fragrance-notes ul { list-style: none; padding: 0; }
+        .fragrance-notes li { margin-bottom: 8px; color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="product-page-wrapper">
+    <div class="product-image-section">
+        <img id="product-image" src="" alt="Product Image">
+    </div>
+
+    <div class="product-info-section">
+        <h1 id="product-name">Loading...</h1>
+        <div class="price-box">PRICE: <span id="product-price"></span> ֏</div>
+        <p><strong>GENDER:</strong> <span id="product-gender"></span></p>
+
+        <div class="fragrance-notes">
+            <h3>FRAGRANCE NOTES:</h3>
+            <ul id="product-notes"></ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const productName = params.get('name');
+
+        if (productName) {
+            // Հիմնական fetch-ը
+            fetch(`/api/get-perfume-details?name=${encodeURIComponent(productName)}`)
+                .then(response => {
+                    if (!response.ok) throw new Error("Product not found");
+                    return response.json();
+                })
+                .then(data => {
+                    // 1. Անունը թարմացնել
+                    document.getElementById('product-name').textContent = data.name;
+
+                    // 2. Գինը և սեռը
+                    document.getElementById('product-price').textContent = data.price;
+                    document.getElementById('product-gender').textContent = data.gender;
+
+                    // 3. Նկարը (data.image-ը արդեն ունի / սկզբում, ուստի ուղղակի վերագրում ենք)
+                    const imgElement = document.getElementById('product-image');
+                    imgElement.src = data.image;
+                    imgElement.alt = data.name;
+
+                    // 4. Նշումները (Notes)
+                    const notesList = document.getElementById('product-notes');
+                    notesList.innerHTML = ""; // Մաքրում ենք "Loading..."-ը
+                    if (data.notes && Array.isArray(data.notes)) {
+                        data.notes.forEach(note => {
+                            const li = document.createElement('li');
+                            li.textContent = note;
+                            notesList.appendChild(li);
+                        });
+                    }
+                })
+                .catch(err => {
+                    console.error("Error:", err);
+                    document.getElementById('product-name').textContent = "Ապրանքը չգտնվեց";
+                });
+        }
+    });
+</script>
+
+
+</body>
+</html>
